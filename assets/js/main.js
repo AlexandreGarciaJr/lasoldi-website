@@ -4,6 +4,7 @@ import { initForm } from './form.js';
 import { initReveals } from './reveal.js';
 import { initCoinGL } from './coin-gl.js';
 import { initHover } from './hover.js';
+import { initSmooth } from './smooth.js';
 
 const yearEl = document.querySelector('[data-year]');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -15,6 +16,7 @@ const motionOK = document.documentElement.classList.contains('motion');
 initHover({ motion: motionOK && !!window.gsap });
 
 if (motionOK && window.gsap && window.ScrollTrigger && window.SplitText) {
+  initSmooth();
   // Espera as fontes para quebrar linhas com as métricas reais (evita re-split visível).
   const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
   Promise.race([fontsReady, new Promise((r) => setTimeout(r, 1200))]).then(() => {

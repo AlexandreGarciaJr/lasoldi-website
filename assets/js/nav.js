@@ -17,6 +17,7 @@ export function initNav() {
     toggle.querySelector('.menu-toggle__label').textContent = open ? 'Fechar' : 'Menu';
     menu.classList.toggle('is-open', open);
     document.body.classList.toggle('menu-open', open);
+    if (open) window.lenis?.stop(); else window.lenis?.start();
     waFloat?.classList.toggle('is-hidden', open || waHidden);
     if (open) menu.querySelector('a')?.focus({ preventScroll: true });
   };
