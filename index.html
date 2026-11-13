@@ -40,6 +40,7 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/interactions.css">
   <link rel="stylesheet" href="assets/css/motion.css">
 
   <script type="application/ld+json">
@@ -69,6 +70,7 @@
       <nav class="site-nav" aria-label="Principal">
         <ul class="site-nav__list" id="menu-principal" data-menu>
           <li><a href="#quem-somos" data-nav>Quem somos</a></li>
+          <li><a href="#para-quem" data-nav>Para quem</a></li>
           <li><a href="#como-cuidamos" data-nav>Como cuidamos</a></li>
           <li><a href="#contato" data-nav>Contato</a></li>
           <li class="site-nav__cta-mobile">
@@ -94,32 +96,35 @@
 
     <!-- ============ M1 · HERO ============ -->
     <section class="hero" id="topo" aria-labelledby="hero-titulo">
-      <div class="hero__pattern" aria-hidden="true"></div>
+      <div class="hero__pattern" aria-hidden="true">
+        <span class="orbit orbit--a"><i></i></span>
+        <span class="orbit orbit--b"><i></i></span>
+      </div>
       <div class="hero__inner wrap">
         <div class="hero__copy">
-          <p class="eyebrow" data-reveal="fade">Casa de investimentos · Sul do Brasil</p>
+          <p class="eyebrow" data-hero="eyebrow"><span class="visually-hidden">Casa de investimentos · Sul do Brasil</span><span aria-hidden="true" data-hero-chars>Casa de investimentos · Sul do Brasil</span></p>
           <h1 class="hero__title" id="hero-titulo" data-split>Investimentos com cuidado de perto.</h1>
-          <p class="hero__lead" data-reveal="fade">
+          <p class="hero__lead" data-hero="lead">
             Atendemos famílias e investidores que valorizam proximidade, tradição e segurança,
             com atenção pessoal a cada decisão e visão de longo prazo.
           </p>
-          <div class="hero__actions" data-reveal="fade">
+          <div class="hero__actions" data-hero="actions">
             <a class="btn btn--primary btn--lg" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20La%20Soldi%20Capital%20e%20gostaria%20de%20conversar%20sobre%20meus%20investimentos." target="_blank" rel="noopener" data-whatsapp>
               <svg class="btn__icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-whatsapp"/></svg>
               <span>Conversar pelo WhatsApp</span>
             </a>
-            <a class="link-arrow" href="#contato">ou envie uma mensagem <span aria-hidden="true">→</span></a>
+            <a class="link-arrow" href="#contato">ou envie uma mensagem <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></a>
           </div>
         </div>
 
         <figure class="hero__coin" aria-hidden="true">
-          <div class="coin" data-facet="hero">
+          <div class="coin__float"><div class="coin" data-facet="hero">
             <img class="coin__svg" src="assets/brand/moeda-prata-claro.svg" alt="" width="600" height="600" fetchpriority="high">
             <canvas class="coin__gl" data-coin-gl></canvas>
-          </div>
+          </div></div>
         </figure>
 
-        <p class="hero__tagline" data-reveal="fade"><em>Patrimônio que se lapida.</em></p>
+        <p class="hero__tagline" data-hero="tagline"><em>Patrimônio que se lapida.</em></p>
       </div>
     </section>
 
@@ -167,6 +172,67 @@
       </div>
     </section>
 
+    <!-- ============ M2b · MANIFESTO ============ -->
+    <section class="section section--areia manifesto" aria-label="Manifesto">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal="fade">Nosso jeito</p>
+        <p class="manifesto__text" data-manifesto>
+          Cuidar de patrimônio é um trabalho de <em>paciência</em>. Não de pressa, nem de promessas.
+          É ouvir antes de recomendar, explicar cada escolha e revisar o caminho com <em>atenção</em>,
+          ano após ano, para que o que foi construído com esforço <em>permaneça</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ M2c · PARA QUEM CUIDAMOS ============ -->
+    <!-- VALIDAR: perfis propostos; confirmar com o cliente quais atendimentos ele realmente oferece -->
+    <section class="section section--linho audiences" id="para-quem" aria-labelledby="audiences-titulo">
+      <div class="wrap">
+        <header class="audiences__head">
+          <p class="eyebrow" data-reveal="fade">Para quem cuidamos</p>
+          <h2 class="h2" id="audiences-titulo" data-split>Momentos em que um cuidado de perto faz diferença.</h2>
+        </header>
+        <ul class="audiences__list">
+            <li class="audience">
+              <a class="audience__link" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20La%20Soldi%20Capital%20e%20gostaria%20de%20conversar%20sobre%20o%20patrim%C3%B4nio%20da%20minha%20fam%C3%ADlia." target="_blank" rel="noopener" data-whatsapp data-reveal="line">
+                <span class="audience__fill" aria-hidden="true"></span>
+                <span class="audience__num" aria-hidden="true">01</span>
+                <span class="audience__title"><span data-roll>Famílias</span></span>
+                <span class="audience__desc">Organizar, proteger e preparar o patrimônio da família para atravessar gerações.</span>
+                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
+              </a>
+            </li>
+            <li class="audience">
+              <a class="audience__link" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20La%20Soldi%20Capital.%20Sou%20empres%C3%A1rio%20e%20gostaria%20de%20conversar%20sobre%20meus%20investimentos." target="_blank" rel="noopener" data-whatsapp data-reveal="line">
+                <span class="audience__fill" aria-hidden="true"></span>
+                <span class="audience__num" aria-hidden="true">02</span>
+                <span class="audience__title"><span data-roll>Empresários</span></span>
+                <span class="audience__desc">Separar o que é da empresa e o que é seu, com clareza e uma estratégia para cada lado.</span>
+                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
+              </a>
+            </li>
+            <li class="audience">
+              <a class="audience__link" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20La%20Soldi%20Capital%20e%20gostaria%20de%20conversar%20sobre%20planejar%20o%20meu%20futuro." target="_blank" rel="noopener" data-whatsapp data-reveal="line">
+                <span class="audience__fill" aria-hidden="true"></span>
+                <span class="audience__num" aria-hidden="true">03</span>
+                <span class="audience__title"><span data-roll>Planos para o futuro</span></span>
+                <span class="audience__desc">Construir hoje a tranquilidade dos próximos anos, da aposentadoria aos projetos da vida.</span>
+                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
+              </a>
+            </li>
+            <li class="audience">
+              <a class="audience__link" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20La%20Soldi%20Capital%20e%20gostaria%20de%20conversar%20sobre%20uma%20transi%C3%A7%C3%A3o%20de%20patrim%C3%B4nio." target="_blank" rel="noopener" data-whatsapp data-reveal="line">
+                <span class="audience__fill" aria-hidden="true"></span>
+                <span class="audience__num" aria-hidden="true">04</span>
+                <span class="audience__title"><span data-roll>Transições de patrimônio</span></span>
+                <span class="audience__desc">Conduzir heranças e mudanças de vida com cuidado, sem pressa e sem ruído.</span>
+                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
+              </a>
+            </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ============ M3 · COMO CUIDAMOS ============ -->
     <section class="section section--areia method" id="como-cuidamos" aria-labelledby="method-titulo">
       <div class="wrap">
@@ -206,7 +272,7 @@
 
         <p class="method__cta" data-reveal="fade">
           <a class="link-arrow link-arrow--strong" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20primeira%20conversa%20com%20a%20La%20Soldi%20Capital." target="_blank" rel="noopener" data-whatsapp>
-            Agendar uma primeira conversa <span aria-hidden="true">→</span>
+            Agendar uma primeira conversa <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span>
           </a>
         </p>
       </div>
@@ -310,6 +376,7 @@
       <nav class="site-footer__nav" aria-label="Rodapé">
         <ul>
           <li><a href="#quem-somos">Quem somos</a></li>
+          <li><a href="#para-quem">Para quem</a></li>
           <li><a href="#como-cuidamos">Como cuidamos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>

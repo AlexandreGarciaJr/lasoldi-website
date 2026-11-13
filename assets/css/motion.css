@@ -30,5 +30,10 @@
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
+
+/* hero e manifesto: o JS revela depois de dividir o texto */
+.motion [data-hero],
+.motion [data-manifesto] { visibility: hidden; }

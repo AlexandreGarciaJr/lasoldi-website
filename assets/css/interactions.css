@@ -1,0 +1,179 @@
+/* =========================================================
+   Seções Manifesto e Para quem cuidamos
+   + hovers no padrão estúdio (texto que rola, preenchimento
+   a partir do cursor, botão magnético, seta que troca)
+   + movimento contínuo sutil do hero
+   ========================================================= */
+
+/* ======================= MANIFESTO ======================= */
+.manifesto { padding-block: clamp(96px, 6rem + 6vw, 200px); }
+.manifesto__text {
+  margin-top: var(--s-6);
+  font-size: clamp(1.7rem, 1rem + 2.7vw, 3.5rem);
+  line-height: 1.22; letter-spacing: -0.018em; font-weight: 500;
+  color: var(--ink-strong); max-width: 30ch; text-wrap: pretty;
+}
+.manifesto__text em {
+  font-family: var(--font-serif); font-style: italic; font-weight: 500;
+  font-size: 1.12em; letter-spacing: 0; color: var(--ls-musgo);
+}
+
+/* ======================= PARA QUEM CUIDAMOS ======================= */
+.audiences__head { max-width: 820px; }
+.audiences__head .h2 { margin-top: var(--s-4); }
+.audiences__list { margin-top: var(--s-8); border-top: 1px solid var(--line-strong); }
+
+.audience__link {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; grid-template-columns: 72px minmax(0, 1.15fr) minmax(0, 1fr) 150px;
+  align-items: center; column-gap: var(--gutter);
+  padding: clamp(28px, 3vw, 44px) clamp(8px, 1.5vw, 24px);
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--ink); text-decoration: none;
+}
+.audience__fill {
+  position: absolute; inset: 0; z-index: -1; background: var(--ls-ameixa);
+  clip-path: inset(100% 0 0 0); pointer-events: none;
+}
+.audience__num {
+  font-size: 0.9rem; letter-spacing: 0.1em; color: var(--label); font-variant-numeric: tabular-nums;
+  transition: color 420ms var(--ease-out);
+}
+.audience__title {
+  font-size: clamp(1.6rem, 1rem + 2vw, 2.9rem); font-weight: 500; letter-spacing: -0.02em;
+  color: var(--ink-strong); transition: color 420ms var(--ease-out);
+}
+.audience__desc {
+  color: var(--ink-soft); font-size: var(--fs-small); line-height: 1.55; max-width: 40ch;
+  transition: color 420ms var(--ease-out);
+}
+.audience__cta {
+  justify-self: end; display: inline-flex; align-items: center; gap: var(--s-2);
+  font-weight: 500; font-size: 0.95rem; color: var(--ink-strong); transition: color 420ms var(--ease-out);
+}
+.audience__cta-label {
+  opacity: 0; transform: translateX(10px);
+  transition: opacity 420ms var(--ease-out), transform 560ms var(--ease-lapida);
+}
+
+/* estado ativo (hover com JS, ou foco por teclado) */
+.audience__link.is-active .audience__num, .audience__link:focus-visible .audience__num { color: var(--ls-lilas); }
+.audience__link.is-active .audience__title, .audience__link:focus-visible .audience__title,
+.audience__link.is-active .audience__cta, .audience__link:focus-visible .audience__cta { color: var(--ls-linho); }
+.audience__link.is-active .audience__desc, .audience__link:focus-visible .audience__desc { color: rgba(241, 232, 226, 0.92); }
+.audience__link.is-active .audience__cta-label, .audience__link:focus-visible .audience__cta-label { opacity: 1; transform: none; }
+.audience__link:focus-visible { outline-offset: -4px; }
+.audience__link:focus-visible .audience__fill { clip-path: inset(0); }
+
+/* sem o JS de hover (ex.: movimento reduzido): preenchimento simples em CSS */
+@media (hover: hover) {
+  html:not(.hoverfx) .audience__link:hover .audience__fill { clip-path: inset(0); }
+  html:not(.hoverfx) .audience__link:hover .audience__num { color: var(--ls-lilas); }
+  html:not(.hoverfx) .audience__link:hover .audience__title,
+  html:not(.hoverfx) .audience__link:hover .audience__cta { color: var(--ls-linho); }
+  html:not(.hoverfx) .audience__link:hover .audience__desc { color: rgba(241, 232, 226, 0.92); }
+  html:not(.hoverfx) .audience__link:hover .audience__cta-label { opacity: 1; transform: none; }
+}
+
+@media (max-width: 899px) {
+  .audience__link { grid-template-columns: 40px 1fr; row-gap: var(--s-3); padding-inline: 0; }
+  .audience__num { align-self: start; padding-top: 0.75em; }
+  .audience__desc, .audience__cta { grid-column: 2; }
+  .audience__cta { justify-self: start; }
+  .audience__cta-label { opacity: 1; transform: none; }
+}
+
+/* ======================= TEXTO QUE ROLA ======================= */
+.roll {
+  position: relative; display: inline-block; overflow: hidden; vertical-align: top;
+  line-height: 1.25; padding-bottom: 0.02em;
+}
+.roll__a { display: block; transition: transform 640ms var(--ease-lapida); }
+.roll__b {
+  position: absolute; left: 0; top: 100%; display: block; white-space: nowrap;
+  transition: transform 640ms var(--ease-lapida);
+}
+.audience__title .roll { line-height: 1.18; }
+@media (hover: hover) {
+  .btn:hover .roll__a, .btn:hover .roll__b,
+  a[data-nav]:hover .roll__a, a[data-nav]:hover .roll__b,
+  .audience__link:hover .roll__a, .audience__link:hover .roll__b { transform: translateY(-100%); }
+}
+.btn:focus-visible .roll__a, .btn:focus-visible .roll__b,
+.audience__link:focus-visible .roll__a, .audience__link:focus-visible .roll__b { transform: translateY(-100%); }
+
+/* ======================= BOTÕES ======================= */
+/* preenchimento que nasce do ponto em que o cursor entrou (JS define --x/--y) */
+.btn {
+  transition: color 460ms var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: var(--btn-fill);
+  clip-path: circle(0% at var(--x, 50%) var(--y, 100%));
+  transition: clip-path 760ms var(--ease-lapida);
+}
+/* vinho → prata: a peça "ganha banho de prata", como a moeda */
+.btn--primary { --btn-fill: var(--ls-prata); --btn-fg-hover: var(--ls-ameixa); }
+.btn--linho { --btn-fill: var(--ls-ameixa); --btn-fg-hover: var(--ls-linho); }
+@media (hover: hover) {
+  .btn:hover::before { clip-path: circle(150% at var(--x, 50%) var(--y, 100%)); }
+  .btn:hover { color: var(--btn-fg-hover); }
+  .btn--primary:hover, .btn--linho:hover { background: var(--btn-bg); }
+  .btn:hover::after { opacity: 0; }
+  .btn:hover > .btn__icon { transform: rotate(-10deg) scale(1.06); }
+}
+.btn:focus-visible::before { clip-path: circle(150% at 50% 50%); }
+.btn:focus-visible { color: var(--btn-fg-hover); }
+
+/* botão magnético */
+[data-magnetic] { will-change: transform; }
+[data-magnetic] > * { pointer-events: none; }
+
+/* ======================= SETA QUE TROCA ======================= */
+.arrow-swap {
+  position: relative; display: inline-block; overflow: hidden; vertical-align: -0.08em;
+  width: 1.05em; height: 1.2em; line-height: 1.2;
+}
+.arrow-swap i {
+  position: absolute; left: 0; top: 0; font-style: normal;
+  transition: transform 600ms var(--ease-lapida);
+}
+.arrow-swap i + i { transform: translateX(-120%); }
+@media (hover: hover) {
+  a:hover .arrow-swap i:first-child { transform: translateX(120%); }
+  a:hover .arrow-swap i + i { transform: translateX(0); }
+}
+a:focus-visible .arrow-swap i:first-child { transform: translateX(120%); }
+a:focus-visible .arrow-swap i + i { transform: translateX(0); }
+.audience__cta .arrow-swap { font-size: 1.4rem; }
+
+/* ======================= HERO: movimento contínuo sutil ======================= */
+/* duas "moedas" de prata orbitam devagar os anéis: patrimônio que circula */
+.orbit { position: absolute; inset: 0; border-radius: 50%; animation: orbit 64s linear infinite; }
+.orbit--b { inset: 9%; animation-duration: 92s; animation-direction: reverse; }
+.orbit i {
+  position: absolute; left: 50%; top: 0; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%; background: var(--ls-prata-claro);
+  box-shadow: 0 0 0 3px rgba(224, 207, 196, 0.9);
+}
+.orbit--b i { width: 6px; height: 6px; margin: -3px 0 0 -3px; opacity: 0.8; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+
+/* a moeda "respira": flutua e inclina de leve, sem parar */
+.hero__coin .coin__float { animation: coin-float 9s ease-in-out infinite; transform-origin: 50% 60%; }
+@keyframes coin-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -10px, 0) rotate(-1.6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit, .hero__coin .coin__float { animation: none !important; }
+}
+
+/* links do menu: o texto que rola não desalinha da linha de base */
+.site-nav__list a[data-nav] { display: inline-block; }
+.site-nav__list a[data-nav] .roll { display: block; }
+
+/* no celular os anéis passam por trás do texto: as órbitas ficam só no desktop */
+@media (max-width: 899px) { .orbit { display: none; } }

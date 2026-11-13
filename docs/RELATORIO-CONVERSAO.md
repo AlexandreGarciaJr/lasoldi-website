@@ -1,4 +1,4 @@
-# Relatório de conversão e QA (13/11/2026)
+# Relatório de conversão e QA (13/11/2026, revisado após a segunda rodada)
 
 ## Revisão de conversão (checklist da receita)
 
@@ -30,6 +30,9 @@ Ferramenta: Playwright + Chromium headless + axe-core (WCAG 2.0/2.1 A e AA), ser
 Correções feitas durante o QA:
 - Contraste: rótulos em oliva escurecido (`#47533c`); tagline em musgo; textos sobre musgo em linho sólido.
 - `aria-label` indevido gerado pelo SplitText no `<p>` da citação.
+- Segunda rodada: conflito entre o botão magnético e a entrada do topo (botão ficava 20 px abaixo); manifesto voltava a
+  apagar ao subir (agora fica com tinta cheia depois de lido); órbitas passando sobre o texto no celular (só desktop).
+- Novo teste: depois de rolar até o fim e voltar ao topo, todos os textos do hero se recompõem (0 elementos presos).
 - Botão "Fale conosco" vazando no cabeçalho mobile (especificidade do CSS).
 - Traçado do fio do método com `non-scaling-stroke` quebrando o desenho.
 - Moeda do hero no celular sobrepondo o eyebrow.

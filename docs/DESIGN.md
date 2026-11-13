@@ -123,16 +123,22 @@ Formulário com envio progressivo: funciona sem JS (POST normal + página de ret
 
 ---
 
-## 9. Storyboard (6 momentos)
+## 9. Storyboard (8 momentos)
 
 ### M1 · Hero — "Cartão de visitas"
 - **Conteúdo:** logo oficial no cabeçalho · eyebrow "Casa de investimentos · Sul do Brasil" · H1 · subtítulo ·
   CTA WhatsApp + link "ou envie uma mensagem" · tagline Cormorant "Patrimônio que se lapida."
 - **Composição:** fundo areia. Texto em 7 colunas à esquerda; à direita, a **moeda-diamante grande**
-  (≈ 34vw) com reflexo de prata vivo, cortando a borda inferior da dobra. Padrão "assinatura tom sobre tom" a 6% só atrás da moeda.
+  (≈ 34vw) com reflexo de prata vivo. Atrás dela, anéis finos (geometria da borda da moeda). *O padrão
+  "assinatura tom sobre tom" foi trocado pelos anéis: o tile oficial pesa 190 KB.*
 - **UX:** em 5 s: o que é, para quem e como falar. CTA visível sem rolar (desktop e 390×844).
-- **Animação:** H1 sobe por linhas (máscara), 900 ms; moeda entra com a **faceta** (1ª aparição do
-  movimento-assinatura: a gema "corta" a moeda de dentro para fora); shader de luz varre a moeda uma vez e segue lento.
+- **Entrada:** letras do eyebrow em cascata; linhas do H1 sobem pela máscara endireitando de 4°; subtítulo sai do
+  desfoque; botões sobem; tagline surge palavra a palavra do desfoque. Moeda entra com a **faceta** (1ª aparição do
+  movimento-assinatura).
+- **Saída (scrub, reversível):** linhas do H1 somem para cima pela máscara, o resto se dissolve para cima com desfoque.
+- **Movimento contínuo:** moeda flutua e inclina (9 s, ±10 px / 1,6°); brilho da prata a cada ~9 s; duas moedinhas
+  orbitam os anéis (64 s e 92 s, sentidos opostos; só desktop). Tudo desligado com movimento reduzido.
+- **Hover do CTA:** preenchimento prata nasce do ponto de entrada do cursor, texto rola, botão magnético.
 - **Tecnologia:** GSAP + WebGL (fallback SVG).
 - **Mobile:** moeda menor, acima do H1, cortada à direita; CTA ocupa a largura; shader com resolução 0,75× e sem ponteiro.
 
@@ -142,6 +148,20 @@ Formulário com envio progressivo: funciona sem JS (POST normal + página de ret
   com fio de sálvia (não cards). Cada princípio leva um micro-glifo do próprio logo (laço, moeda, gema, CAPITAL).
 - **Animação:** fios se desenham da esquerda para a direita (traço), texto em fade+8px. Nada mais.
 - **Mobile:** lista empilhada; fios curtos.
+
+### M2b · Manifesto — "Nosso jeito" *(segunda rodada)*
+- **Conteúdo:** parágrafo grande de tom de voz, com 3 palavras em Cormorant Italic musgo (paciência, atenção, permaneça).
+- **Composição:** fundo areia, texto ameixa em Jost 500 de até 3,5rem, coluna de ~30ch.
+- **Animação:** as palavras começam a 22% de opacidade e ganham tinta com a rolagem (scrub). Depois de lido, fica
+  cheio e não volta a apagar.
+- **Mobile:** mesmo efeito, texto menor.
+
+### M2c · Para quem cuidamos — lista editorial *(segunda rodada)*
+- **Conteúdo:** 4 perfis (validar com o cliente), cada um um link de WhatsApp com mensagem própria.
+- **Composição:** fundo linho, linhas largas com número, título grande, descrição e "Conversar →".
+- **Hover (desktop):** a linha se enche de ameixa a partir do lado em que o cursor entrou e esvazia pelo lado em que
+  saiu; o título rola, a seta troca e o texto vira linho.
+- **Mobile:** linhas empilhadas, descrição e "Conversar" sempre visíveis.
 
 ### M3 · Como cuidamos — método em 4 tempos
 - **Conteúdo:** Conversa → Diagnóstico → Estratégia → Acompanhamento (genérico até o cliente confirmar os serviços).

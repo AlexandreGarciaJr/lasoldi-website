@@ -1,6 +1,7 @@
 // Revelações por rolagem (GSAP + ScrollTrigger + SplitText).
 // Tokens espelham assets/css/tokens.css.
 import { facetReveal } from './facet.js';
+import { initHero } from './hero.js';
 
 const T = {
   easeLapida: 'power2.inOut',   // cubic-bezier(.65,0,.35,1)
@@ -21,9 +22,12 @@ export function initReveals() {
   const isMobile = matchMedia('(max-width: 899px)').matches;
   const shift = isMobile ? 16 : 24;
 
+  // ---------- hero: entrada e saída próprias ----------
+  initHero({ isMobile });
+
   // ---------- títulos: linhas sobem por trás de máscara ----------
   document.querySelectorAll('[data-split]').forEach((el) => {
-    const inHero = !!el.closest('.hero');
+    if (el.closest('.hero')) return;
     SplitText.create(el, {
       type: 'lines',
       mask: 'lines',
@@ -36,24 +40,33 @@ export function initReveals() {
           yPercent: 110,
           duration: T.durReveal,
           stagger: T.staggerLine,
-          delay: inHero ? 0.15 : 0,
-          scrollTrigger: inHero ? undefined : { trigger: el, start: T.start, once: true },
+          scrollTrigger: { trigger: el, start: T.start, once: true },
         });
       },
     });
   });
 
   // ---------- fades simples (eyebrows, parágrafos, CTAs) ----------
-  const heroFades = gsap.utils.toArray('.hero [data-reveal="fade"]');
-  gsap.to(heroFades, {
-    opacity: 1, y: 0, duration: T.durReveal, stagger: T.staggerItem, delay: 0.35,
-  });
-
   ScrollTrigger.batch(gsap.utils.toArray('[data-reveal="fade"]').filter((el) => !el.closest('.hero')), {
     start: T.start,
     once: true,
     onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: T.durReveal, stagger: T.staggerItem }),
   });
+
+  // ---------- manifesto: as palavras ganham tinta conforme a leitura ----------
+  const manifesto = document.querySelector('[data-manifesto]');
+  if (manifesto) {
+    const { words } = SplitText.create(manifesto, { type: 'words', aria: 'none' });
+    gsap.set(manifesto, { visibility: 'visible' });
+    gsap.fromTo(words, { opacity: 0.22 }, {
+      opacity: 1, ease: 'none', stagger: 0.12,
+      scrollTrigger: {
+        trigger: manifesto, start: 'top 78%', end: 'bottom 52%', scrub: 0.6,
+        // depois de lido, o texto fica com tinta cheia (não volta a apagar ao subir)
+        onLeave: (self) => { self.animation.progress(1); self.kill(false, true); },
+      },
+    });
+  }
 
   // ---------- princípios: o fio superior se desenha, depois o conteúdo ----------
   ScrollTrigger.batch('[data-reveal="line"]', {

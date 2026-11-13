@@ -74,6 +74,33 @@ usa o SVG oficial como máscara e aplica o degradê oficial com escovado, relevo
 brilho lento que acompanha a rolagem e o mouse. O SVG estático é o que carrega primeiro; o shader entra depois,
 roda a ~30 fps e para quando a moeda sai da tela.
 
+**Um topo que entra, sai e nunca fica parado.** Cada texto do topo tem a sua entrada: as letras do rótulo em
+cascata, as linhas do título subindo por trás de uma máscara enquanto endireitam de uma leve inclinação, o texto
+saindo do desfoque e a frase em Cormorant surgindo palavra a palavra. Ao rolar, tudo se desfaz para cima no ritmo da
+rolagem e se recompõe ao voltar. Parado, o topo continua vivo de um jeito sutil: a moeda flutua e inclina devagar,
+o brilho da prata passa a cada poucos segundos e duas pequenas moedas orbitam os anéis (*patrimônio que circula*).
+
+![Saída do topo: as linhas do título somem pela máscara e o texto se dissolve com desfoque](.github/preview-hero-saida.jpg)
+
+**Hovers de estúdio.** O botão principal ganha um *banho de prata*: o metal nasce do ponto exato em que o cursor
+entrou, o texto rola para cima e o botão é magnético, acompanhando o mouse. Os links do menu rolam o texto, as setas
+saem por um lado e entram pelo outro, e os botões sobre musgo invertem para ameixa. No celular, nada depende de hover.
+
+<p align="center">
+  <img src=".github/preview-hover-botao.jpg" alt="Botão do topo no hover, com preenchimento prata" width="620">
+</p>
+
+**Manifesto que se lê com a rolagem.** Um parágrafo grande sobre o jeito de trabalhar da casa, em que as palavras
+ganham tinta conforme a leitura avança. Depois de lido, o texto fica cheio: não volta a apagar ao subir.
+
+![Manifesto: "Cuidar de patrimônio é um trabalho de paciência..."](.github/preview-manifesto.jpg)
+
+**Para quem cuidamos.** Uma lista editorial com quatro momentos de vida (famílias, empresários, planos para o futuro
+e transições de patrimônio). No hover, a linha se enche de ameixa a partir do lado em que o cursor entrou. Cada linha
+abre o WhatsApp com uma mensagem diferente, então o cliente já chega dizendo o que procura.
+
+![Lista "Para quem cuidamos" com a segunda linha preenchida em ameixa](.github/preview-para-quem.jpg)
+
 **O traço contínuo.** Em *Como cuidamos*, as quatro etapas são ligadas por um único fio com laços, inspirado no
 traço da assinatura, que se desenha conforme a rolagem.
 
@@ -102,7 +129,7 @@ um formulário curto: dois campos obrigatórios e o consentimento LGPD.
 |---|---|
 | **Conversão** | WhatsApp na primeira dobra no desktop e no celular, botões com verbo e benefício, uma única ação principal, sem urgência falsa nem promessa de rentabilidade |
 | **Acessibilidade** | Zero violações no axe (WCAG 2.1 AA) em desktop, tablet, celular e movimento reduzido. HTML semântico, foco visível, menu por teclado com Esc, erros do formulário anunciados |
-| **Movimento responsável** | Com "reduzir movimento" nada se move e o WebGL nem carrega. Sem JavaScript, todo o conteúdo aparece; se a animação falhar, um temporizador de segurança libera tudo |
+| **Movimento responsável** | Com "reduzir movimento" nada se move (nem a flutuação da moeda nem as órbitas) e o WebGL nem carrega. Sem JavaScript, todo o conteúdo aparece; se a animação falhar, um temporizador de segurança libera tudo |
 | **Mobile de verdade** | Pensado em 390×844 primeiro: moeda reposicionada, sem parallax, menu em tela cheia, shader com resolução reduzida |
 | **Performance** | Sem framework e sem build. Fontes reduzidas para 57 KB em woff2, GSAP auto-hospedado, nenhuma foto ou vídeo, imagem principal pré-carregada |
 | **Formulário seguro** | Validação no navegador e no servidor, honeypot, tempo mínimo de preenchimento, limite por IP, SMTP autenticado e credenciais fora do repositório |
@@ -119,7 +146,9 @@ pasta é o que vai para o servidor.
 index.html ─── CSS (tokens → base → layout → componentes → motion)
      │
      ├── main.js ──► nav.js        cabeçalho, menu, seção ativa, WhatsApp flutuante
+     │          ├──► hover.js      texto que rola, preenchimento, magnético, lista
      │          ├──► reveal.js     GSAP + ScrollTrigger + SplitText
+     │          │      ├──► hero.js    entrada e saída dos textos do topo
      │          │      └──► facet.js   movimento-assinatura (gema)
      │          ├──► coin-gl.js    shader WebGL da prata
      │          └──► form.js       validação e envio com fetch
@@ -157,14 +186,14 @@ cache e cabeçalhos de segurança.
 ## Onde editar os textos
 
 Tudo está em HTML, no `index.html`, separado por comentários: `M1 · HERO`, `M2 · QUEM SOMOS`,
-`M3 · COMO CUIDAMOS`, `M4 · PAUSA EDITORIAL`, `M5 · CONTATO` e `M6 · RODAPÉ`. As animações se ajustam sozinhas a
+`M2b · MANIFESTO`, `M2c · PARA QUEM CUIDAMOS`, `M3 · COMO CUIDAMOS`, `M4 · PAUSA EDITORIAL`, `M5 · CONTATO` e `M6 · RODAPÉ`. As animações se ajustam sozinhas a
 textos maiores ou menores. Cores, fontes, espaçamentos e tempos de animação ficam em
 [`assets/css/tokens.css`](assets/css/tokens.css).
 
 ## Estrutura
 
 ```text
-├── index.html               página única (6 seções)
+├── index.html               página única (8 seções)
 ├── privacidade.html         política de privacidade (base LGPD)
 ├── avisos.html              avisos legais e regulatórios
 ├── obrigado.html            retorno do formulário sem JavaScript
@@ -175,8 +204,8 @@ textos maiores ou menores. Cores, fontes, espaçamentos e tempos de animação f
 │   ├── config.example.php   modelo das credenciais SMTP (config.php fica fora do git)
 │   └── lib/PHPMailer/
 ├── assets/
-│   ├── css/                 tokens, base, layout, componentes, motion
-│   ├── js/                  main, nav, reveal, facet, coin-gl, form
+│   ├── css/                 tokens, base, layout, componentes, interações, motion
+│   ├── js/                  main, nav, hero, reveal, facet, hover, coin-gl, form
 │   ├── vendor/              GSAP, ScrollTrigger e SplitText
 │   ├── fonts/               Jost e Cormorant Garamond Italic (woff2)
 │   ├── brand/               logos, moeda e padrões oficiais
@@ -198,10 +227,11 @@ textos maiores ou menores. Cores, fontes, espaçamentos e tempos de animação f
 | **3. Mensagem** | Arquitetura one-page e textos propostos, sem inventar dados | ✅ |
 | **4. Construção** | HTML semântico, design system em tokens, responsividade | ✅ |
 | **5. Motion** | GSAP, gema facetada, fio contínuo e shader da prata | ✅ |
-| **6. Formulário** | PHPMailer com validação, anti-spam e LGPD | ✅ |
-| **7. QA** | Playwright + axe em 4 cenários, correções e revisão de conversão | ✅ |
-| **8. Dados do cliente** | Serviços, pessoas, contatos e textos regulatórios | ⏳ |
-| **9. Publicação** | Domínio, SMTP, envio real e Core Web Vitals em produção | ⏳ |
+| **6. Segunda rodada** | Manifesto, Para quem cuidamos, hovers de estúdio, entrada e saída do topo, movimento contínuo | ✅ |
+| **7. Formulário** | PHPMailer com validação, anti-spam e LGPD | ✅ |
+| **8. QA** | Playwright + axe em 4 cenários, correções e revisão de conversão | ✅ |
+| **9. Dados do cliente** | Serviços, pessoas, contatos e textos regulatórios | ⏳ |
+| **10. Publicação** | Domínio, SMTP, envio real e Core Web Vitals em produção | ⏳ |
 
 ## Créditos
 

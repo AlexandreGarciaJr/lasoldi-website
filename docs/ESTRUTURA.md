@@ -59,6 +59,36 @@ H2: **Uma casa de investimentos com mão de quem cuida.**
 
 ---
 
+## 2b. Manifesto
+**Acredita:** "Eles pensam como eu: com calma e no longo prazo."
+
+Eyebrow: `NOSSO JEITO`
+
+> Cuidar de patrimônio é um trabalho de *paciência*. Não de pressa, nem de promessas. É ouvir antes de recomendar,
+> explicar cada escolha e revisar o caminho com *atenção*, ano após ano, para que o que foi construído com esforço
+> *permaneça*.
+
+As palavras ganham tinta conforme a leitura (rolagem). Sem nenhum dado comercial: é tom de voz.
+
+---
+
+## 2c. Para quem cuidamos
+**Acredita:** "Esse atendimento é para alguém como eu." Cada linha abre o WhatsApp com uma mensagem própria.
+
+Eyebrow: `PARA QUEM CUIDAMOS`
+H2: **Momentos em que um cuidado de perto faz diferença.**
+
+`[VALIDAR]` Perfis propostos; confirmar com o cliente quais atendimentos ele realmente faz:
+
+| # | Perfil | Texto | Mensagem do WhatsApp |
+|---|---|---|---|
+| 01 | Famílias | Organizar, proteger e preparar o patrimônio da família para atravessar gerações. | "...gostaria de conversar sobre o patrimônio da minha família." |
+| 02 | Empresários | Separar o que é da empresa e o que é seu, com clareza e uma estratégia para cada lado. | "...Sou empresário e gostaria de conversar sobre meus investimentos." |
+| 03 | Planos para o futuro | Construir hoje a tranquilidade dos próximos anos, da aposentadoria aos projetos da vida. | "...gostaria de conversar sobre planejar o meu futuro." |
+| 04 | Transições de patrimônio | Conduzir heranças e mudanças de vida com cuidado, sem pressa e sem ruído. | "...gostaria de conversar sobre uma transição de patrimônio." |
+
+---
+
 ## 3. Como cuidamos
 **Acredita:** "Sei exatamente o que acontece depois que eu chamar."
 

@@ -64,7 +64,7 @@
 .link-arrow span { transition: transform 500ms var(--ease-lapida); }
 @media (hover: hover) {
   .link-arrow:hover { background-size: 0% 1px; background-position: right bottom; }
-  .link-arrow:hover span { transform: translateX(6px); }
+
 }
 .link-arrow--strong { font-size: var(--fs-lead); }
 

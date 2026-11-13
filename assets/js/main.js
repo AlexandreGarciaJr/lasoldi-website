@@ -3,6 +3,7 @@ import { initNav } from './nav.js';
 import { initForm } from './form.js';
 import { initReveals } from './reveal.js';
 import { initCoinGL } from './coin-gl.js';
+import { initHover } from './hover.js';
 
 const yearEl = document.querySelector('[data-year]');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -11,6 +12,7 @@ initNav();
 initForm();
 
 const motionOK = document.documentElement.classList.contains('motion');
+initHover({ motion: motionOK && !!window.gsap });
 
 if (motionOK && window.gsap && window.ScrollTrigger && window.SplitText) {
   // Espera as fontes para quebrar linhas com as métricas reais (evita re-split visível).
