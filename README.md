@@ -16,6 +16,8 @@ com o acabamento de um estúdio digital premiado.
 ![PHPMailer](https://img.shields.io/badge/PHPMailer-521942?style=flat-square)
 ![Apache](https://img.shields.io/badge/Apache-D22128?style=flat-square&logo=apache&logoColor=white)
 
+**[Ver o preview →](https://alexandregarciajr.github.io/lasoldi-website/)** <sub>(GitHub Pages)</sub>
+
 </div>
 
 ![Topo do site no desktop: título "Investimentos com cuidado de perto.", botão de WhatsApp e a moeda-diamante em prata](.github/preview-desktop.jpg)
@@ -23,6 +25,9 @@ com o acabamento de um estúdio digital premiado.
 > **Versão de proposta.** Os textos foram escritos a partir do Brand Guide e são genéricos de propósito: o cliente
 > valida e completa com os dados reais (serviços, pessoas, contatos e avisos regulatórios). O site não exibe nenhum
 > número, certificação ou depoimento que não tenha sido confirmado.
+>
+> No preview (GitHub Pages, sem PHP) o formulário não envia e o WhatsApp ainda aponta para um número provisório. Os
+> dois passam a funcionar na hospedagem final, depois do checklist de [Publicar](#publicar).
 
 ---
 
