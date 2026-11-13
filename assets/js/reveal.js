@@ -59,7 +59,7 @@ export function initReveals() {
     const { words } = SplitText.create(manifesto, { type: 'words', aria: 'none' });
     gsap.set(manifesto, { visibility: 'visible' });
     // palavras em itálico (verde) partem de um pouco mais de tinta para manter contraste mínimo
-    gsap.fromTo(words, { opacity: (i, el) => (el.closest('em') ? 0.8 : 0.55) }, {
+    gsap.fromTo(words, { opacity: (i, el) => (el.closest('em') ? 0.85 : 0.55) }, {
       opacity: 1, ease: 'none', stagger: 0.12,
       // reversível: ao subir a página, as palavras voltam a apagar
       scrollTrigger: { trigger: manifesto, start: 'top 78%', end: 'bottom 52%', scrub: 0.6 },

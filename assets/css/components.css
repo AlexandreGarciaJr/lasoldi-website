@@ -80,18 +80,17 @@
   position: relative; padding-top: var(--s-6);
   border-top: 1px solid var(--line-strong);
 }
-.principle__glyph { width: 40px; height: 40px; color: var(--ls-ameixa); margin-bottom: var(--s-5); }
-.principle__glyph--coin { width: 34px; height: 34px; margin-top: 3px; margin-bottom: calc(var(--s-5) + 3px); }
-.principle__glyph--word {
-  display: flex; align-items: center; width: auto; font-size: 0.82rem; font-weight: 500;
-  letter-spacing: 0.42em; color: var(--ls-ameixa);
+/* ícones dos princípios: uma família só (traço fino, mesma caixa, mesmo peso) */
+.principle__glyph {
+  width: 44px; height: 44px; color: var(--ls-ameixa); margin-bottom: var(--s-5);
+  fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  overflow: visible;
 }
 .principle__title { font-size: var(--fs-h3); margin-bottom: var(--s-3); }
 .principle p { color: var(--ink-soft); font-size: var(--fs-small); line-height: 1.6; max-width: 30ch; }
 @media (max-width: 599px) {
   .principle { padding-block: var(--s-6); display: grid; grid-template-columns: 56px 1fr; column-gap: var(--s-4); }
   .principle__glyph { grid-row: 1 / span 2; margin: 0; }
-  .principle__glyph--word { font-size: 0.6rem; letter-spacing: 0.2em; align-self: start; padding-top: 10px; }
 }
 
 /* ---------- etapas ---------- */
@@ -162,18 +161,6 @@
 .form-success h3 { font-size: var(--fs-h3); }
 .form-success p { color: var(--ink-soft); }
 
-/* ---------- WhatsApp flutuante (celular) ---------- */
-.wa-float {
-  position: fixed; z-index: 40; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom));
-  width: 58px; height: 58px; border-radius: 50%;
-  display: none; place-items: center;
-  background: var(--ls-ameixa); color: var(--ls-linho);
-  box-shadow: 0 10px 30px -10px rgba(58, 16, 48, 0.55);
-  transition: transform 500ms var(--ease-lapida), opacity 300ms linear;
-}
-.wa-float svg { width: 28px; height: 28px; }
-.wa-float.is-hidden { transform: translateY(140%); opacity: 0; pointer-events: none; }
-@media (max-width: 899px) { .wa-float { display: grid; } }
 
 /* ---------- páginas internas (legais) ---------- */
 .page-legal { padding-top: calc(var(--header-h) + var(--s-8)); padding-bottom: var(--section-y); }

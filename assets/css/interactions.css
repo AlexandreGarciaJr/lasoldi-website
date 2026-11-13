@@ -14,8 +14,8 @@
   color: var(--ink-strong); max-width: 30ch; text-wrap: pretty;
 }
 .manifesto__text em {
-  font-family: var(--font-serif); font-style: italic; font-weight: 500;
-  font-size: 1.12em; letter-spacing: 0; color: var(--label);
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1.12em; letter-spacing: 0; font-weight: 600; color: var(--ls-musgo); /* 600 = o mais pesado da Cormorant incluída */
 }
 
 /* ======================= PARA QUEM CUIDAMOS ======================= */
@@ -121,7 +121,7 @@
   .btn:hover { color: var(--btn-fg-hover); }
   .btn--primary:hover, .btn--linho:hover { background: var(--btn-bg); }
   .btn:hover::after { opacity: 0; }
-  .btn:hover > .btn__icon { transform: rotate(-10deg) scale(1.06); }
+  .btn:hover > .btn__icon--arrow { transform: translateX(4px); }
 }
 .btn:focus-visible::before { clip-path: circle(150% at 50% 50%); }
 .btn:focus-visible { color: var(--btn-fg-hover); }

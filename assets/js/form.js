@@ -3,10 +3,10 @@
 
 const MSG = {
   nome: 'Conte como podemos chamar você.',
-  telefone: 'Informe um WhatsApp ou telefone com DDD.',
+  telefone: 'Informe um telefone com DDD.',
   email: 'Este e-mail parece incompleto.',
   consentimento: 'Precisamos do seu consentimento para retornar o contato.',
-  erroEnvio: 'Não conseguimos enviar agora. Tente de novo ou fale direto pelo WhatsApp.',
+  erroEnvio: 'Não conseguimos enviar agora. Tente de novo em instantes ou escreva para contato@lasoldicapital.com.br.',
 };
 
 const onlyDigits = (v) => v.replace(/\D/g, '');
@@ -25,6 +25,18 @@ export function initForm() {
 
   const time = form.querySelector('[data-form-time]');
   if (time) time.value = String(Date.now());
+
+  // links com data-mensagem (Para quem cuidamos, método) já deixam o assunto escrito no formulário
+  const msg = form.elements.mensagem;
+  let autoFilled = '';
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[data-mensagem]');
+    if (!link || !msg) return;
+    if (!msg.value.trim() || msg.value === autoFilled) {
+      msg.value = link.dataset.mensagem;
+      autoFilled = msg.value;
+    }
+  });
 
   const tel = form.elements.telefone;
   tel?.addEventListener('input', () => {
@@ -104,7 +116,7 @@ export function initForm() {
       done.innerHTML = `
         <img class="form-success__coin" src="assets/brand/moeda-prata-claro.svg" alt="" width="48" height="48">
         <h3>Recebemos sua mensagem.</h3>
-        <p>Em breve, alguém da nossa equipe fala com você. Se preferir adiantar, chame no WhatsApp.</p>`;
+        <p>Em breve, alguém da nossa equipe fala com você pessoalmente.</p>`;
       form.replaceWith(done);
       done.focus();
     } catch (err) {

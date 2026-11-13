@@ -1,9 +1,8 @@
-// Cabeçalho, menu mobile, seção ativa e WhatsApp flutuante.
+// Cabeçalho, menu mobile e seção ativa.
 export function initNav() {
   const header = document.querySelector('[data-header]');
   const toggle = document.querySelector('[data-menu-toggle]');
   const menu = document.querySelector('[data-menu]');
-  const waFloat = document.querySelector('[data-wa-float]');
 
   // --- cabeçalho com fio ao rolar
   const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
@@ -18,7 +17,6 @@ export function initNav() {
     menu.classList.toggle('is-open', open);
     document.body.classList.toggle('menu-open', open);
     if (open) window.lenis?.stop(); else window.lenis?.start();
-    waFloat?.classList.toggle('is-hidden', open || waHidden);
     if (open) menu.querySelector('a')?.focus({ preventScroll: true });
   };
   toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
@@ -43,17 +41,4 @@ export function initNav() {
   }, { rootMargin: '-45% 0px -50% 0px' });
   map.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });
 
-  // --- WhatsApp flutuante: escondido enquanto o CTA do hero ou o bloco de contato estão na tela
-  let waHidden = true;
-  if (waFloat) {
-    waFloat.classList.add('is-hidden');
-    const watched = [document.querySelector('.hero__actions'), document.getElementById('contato'), document.querySelector('.site-footer')].filter(Boolean);
-    const visible = new Set();
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => (en.isIntersecting ? visible.add(en.target) : visible.delete(en.target)));
-      waHidden = visible.size > 0;
-      waFloat.classList.toggle('is-hidden', waHidden || document.body.classList.contains('menu-open'));
-    }, { threshold: 0 });
-    watched.forEach((el) => io.observe(el));
-  }
 }

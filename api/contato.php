@@ -42,7 +42,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 $configFile = __DIR__ . '/config.php';
 if (!is_file($configFile)) {
     error_log('[contato] api/config.php ausente.');
-    respond(false, 'Formulário temporariamente indisponível. Fale conosco pelo WhatsApp.', 503);
+    respond(false, 'Formulário temporariamente indisponível. Tente novamente em instantes.', 503);
 }
 $config = require $configFile;
 
@@ -70,7 +70,7 @@ $hits = is_file($rateFile) ? array_filter(
     fn ($ts) => $ts > $now - 600
 ) : [];
 if (count($hits) >= 5) {
-    respond(false, 'Recebemos muitas mensagens deste endereço. Tente novamente em alguns minutos ou fale pelo WhatsApp.', 429);
+    respond(false, 'Recebemos muitas mensagens deste endereço. Tente novamente em alguns minutos.', 429);
 }
 
 // ---------- validação ----------
@@ -104,13 +104,13 @@ $html = '<div style="font-family:Arial,sans-serif;color:#3a1030;line-height:1.5"
     . '<p style="font-size:12px;letter-spacing:.2em;color:#5f6b52">NOVO CONTATO PELO SITE</p>'
     . '<table cellpadding="6" style="border-collapse:collapse">'
     . '<tr><td><strong>Nome</strong></td><td>' . $esc($nome) . '</td></tr>'
-    . '<tr><td><strong>WhatsApp/telefone</strong></td><td>' . $esc($telefone) . '</td></tr>'
+    . '<tr><td><strong>Telefone</strong></td><td>' . $esc($telefone) . '</td></tr>'
     . '<tr><td><strong>E-mail</strong></td><td>' . ($email !== '' ? $esc($email) : '—') . '</td></tr>'
     . '<tr><td valign="top"><strong>Mensagem</strong></td><td>' . ($mensagem !== '' ? nl2br($esc($mensagem)) : '—') . '</td></tr>'
     . '<tr><td><strong>Consentimento LGPD</strong></td><td>Sim · ' . $esc($quando) . '</td></tr>'
     . '</table></div>';
 
-$text = "Novo contato pelo site\n\nNome: {$nome}\nWhatsApp/telefone: {$telefone}\nE-mail: "
+$text = "Novo contato pelo site\n\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: "
     . ($email ?: '—') . "\nMensagem: " . ($mensagem ?: '—') . "\nConsentimento LGPD: sim · {$quando}\n";
 
 $mail = new PHPMailer(true);
@@ -142,7 +142,7 @@ try {
     $mail->send();
 } catch (MailException $e) {
     error_log('[contato] falha no envio: ' . $mail->ErrorInfo);
-    respond(false, 'Não conseguimos enviar agora. Tente de novo ou fale direto pelo WhatsApp.', 502);
+    respond(false, 'Não conseguimos enviar agora. Tente de novo em instantes.', 502);
 }
 
 $hits[] = $now;
