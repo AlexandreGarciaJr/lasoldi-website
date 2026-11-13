@@ -23,7 +23,8 @@ export function initHero({ isMobile }) {
   const actions = hero.querySelector('[data-hero="actions"]');
   const tagline = hero.querySelector('[data-hero="tagline"]');
 
-  const chars = SplitText.create(eyebrowChars, { type: 'chars', aria: 'none' }).chars;
+  // palavras + letras: a linha só quebra entre palavras (nunca no meio de "SUL")
+  const chars = SplitText.create(eyebrowChars, { type: 'words,chars', aria: 'none' }).chars;
   const words = SplitText.create(tagline, { type: 'words', aria: 'none' }).words;
 
   gsap.set([eyebrow, lead, actions, tagline, title], { visibility: 'visible' });
