@@ -136,9 +136,12 @@ Formulário com envio progressivo: funciona sem JS (POST normal + página de ret
   desfoque; botões sobem; tagline surge palavra a palavra do desfoque. Moeda entra com a **faceta** (1ª aparição do
   movimento-assinatura).
 - **Saída (scrub, reversível):** linhas do H1 somem para cima pela máscara, o resto se dissolve para cima com desfoque.
+  Completa em ~45% da altura do topo no desktop (~400 px de rolagem) e 70% no celular.
 - **Movimento contínuo:** moeda flutua e inclina (9 s, ±10 px / 1,6°); brilho da prata a cada ~9 s; duas moedinhas
   orbitam os anéis (64 s e 92 s, sentidos opostos; só desktop). Tudo desligado com movimento reduzido.
-- **Hover do CTA:** preenchimento prata nasce do ponto de entrada do cursor, texto rola, botão magnético.
+- **Hover do CTA:** preenchimento prata (degradê oficial) nasce do ponto de entrada do cursor, texto vira vinho e
+  rola, botão magnético. *Testadas alternativas mais discretas (vinho profundo, linho); mantido o prata até o
+  retorno do cliente.*
 - **Tecnologia:** GSAP + WebGL (fallback SVG).
 - **Mobile:** moeda menor, acima do H1, cortada à direita; CTA ocupa a largura; shader com resolução 0,75× e sem ponteiro.
 
@@ -152,8 +155,8 @@ Formulário com envio progressivo: funciona sem JS (POST normal + página de ret
 ### M2b · Manifesto — "Nosso jeito" *(segunda rodada)*
 - **Conteúdo:** parágrafo grande de tom de voz, com 3 palavras em Cormorant Italic musgo (paciência, atenção, permaneça).
 - **Composição:** fundo areia, texto ameixa em Jost 500 de até 3,5rem, coluna de ~30ch.
-- **Animação:** as palavras começam a 22% de opacidade e ganham tinta com a rolagem (scrub). Depois de lido, fica
-  cheio e não volta a apagar.
+- **Animação:** as palavras começam a 55% de opacidade (80% nas palavras em itálico, para manter o contraste) e ganham tinta com a rolagem (scrub), nos dois sentidos:
+  ao subir a página, voltam a apagar.
 - **Mobile:** mesmo efeito, texto menor.
 
 ### M2c · Para quem cuidamos — lista editorial *(segunda rodada)*

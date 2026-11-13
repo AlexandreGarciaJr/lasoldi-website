@@ -58,13 +58,11 @@ export function initReveals() {
   if (manifesto) {
     const { words } = SplitText.create(manifesto, { type: 'words', aria: 'none' });
     gsap.set(manifesto, { visibility: 'visible' });
-    gsap.fromTo(words, { opacity: 0.22 }, {
+    // palavras em itálico (verde) partem de um pouco mais de tinta para manter contraste mínimo
+    gsap.fromTo(words, { opacity: (i, el) => (el.closest('em') ? 0.8 : 0.55) }, {
       opacity: 1, ease: 'none', stagger: 0.12,
-      scrollTrigger: {
-        trigger: manifesto, start: 'top 78%', end: 'bottom 52%', scrub: 0.6,
-        // depois de lido, o texto fica com tinta cheia (não volta a apagar ao subir)
-        onLeave: (self) => { self.animation.progress(1); self.kill(false, true); },
-      },
+      // reversível: ao subir a página, as palavras voltam a apagar
+      scrollTrigger: { trigger: manifesto, start: 'top 78%', end: 'bottom 52%', scrub: 0.6 },
     });
   }
 

@@ -30,8 +30,8 @@ Ferramenta: Playwright + Chromium headless + axe-core (WCAG 2.0/2.1 A e AA), ser
 Correções feitas durante o QA:
 - Contraste: rótulos em oliva escurecido (`#47533c`); tagline em musgo; textos sobre musgo em linho sólido.
 - `aria-label` indevido gerado pelo SplitText no `<p>` da citação.
-- Segunda rodada: conflito entre o botão magnético e a entrada do topo (botão ficava 20 px abaixo); manifesto voltava a
-  apagar ao subir (agora fica com tinta cheia depois de lido); órbitas passando sobre o texto no celular (só desktop).
+- Segunda rodada: conflito entre o botão magnético e a entrada do topo (botão ficava 20 px abaixo); manifesto agora é
+  reversível por escolha de direção (as palavras voltam a apagar ao subir); órbitas passando sobre o texto no celular (só desktop).
 - Novo teste: depois de rolar até o fim e voltar ao topo, todos os textos do hero se recompõem (0 elementos presos).
 - Botão "Fale conosco" vazando no cabeçalho mobile (especificidade do CSS).
 - Traçado do fio do método com `non-scaling-stroke` quebrando o desenho.
@@ -42,6 +42,10 @@ Formulário:
 - Back (`api/contato.php`): validação ✅, honeypot ✅, tempo mínimo ✅, limite por IP ✅, sem `config.php` → 503 amigável ✅,
   SMTP fora do ar → 502 amigável ✅, sem JS → redirect 303 ✅.
 - **Não testado:** envio real de e-mail (faltam as credenciais SMTP do cliente).
+
+**Manifesto reversível sem perder contraste:** as palavras partem de 55% de opacidade (80% nas em itálico, que
+ficaram em oliva escurecido `#47533c`). Assim o texto apagado ainda passa no contraste para texto grande, e o axe
+volta a 0 violações mesmo com a seção apagada.
 
 ## Não verificado (exige ambiente real)
 - Safari iOS em aparelho físico (testado só com emulação de iPhone no Chromium).

@@ -83,7 +83,7 @@ o brilho da prata passa a cada poucos segundos e duas pequenas moedas orbitam os
 ![Saída do topo: as linhas do título somem pela máscara e o texto se dissolve com desfoque](.github/preview-hero-saida.jpg)
 
 **Hovers de estúdio.** O botão principal ganha um *banho de prata*: o metal nasce do ponto exato em que o cursor
-entrou, o texto rola para cima e o botão é magnético, acompanhando o mouse. Os links do menu rolam o texto, as setas
+entrou, o texto vira vinho e rola para cima, e o botão é magnético, acompanhando o mouse. Os links do menu rolam o texto, as setas
 saem por um lado e entram pelo outro, e os botões sobre musgo invertem para ameixa. No celular, nada depende de hover.
 
 <p align="center">
@@ -91,7 +91,7 @@ saem por um lado e entram pelo outro, e os botões sobre musgo invertem para ame
 </p>
 
 **Manifesto que se lê com a rolagem.** Um parágrafo grande sobre o jeito de trabalhar da casa, em que as palavras
-ganham tinta conforme a leitura avança. Depois de lido, o texto fica cheio: não volta a apagar ao subir.
+saem de 55% e ganham tinta cheia conforme a leitura avança, e voltam a clarear quando a página sobe.
 
 ![Manifesto: "Cuidar de patrimônio é um trabalho de paciência..."](.github/preview-manifesto.jpg)
 

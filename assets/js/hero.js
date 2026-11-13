@@ -42,8 +42,8 @@ export function initHero({ isMobile }) {
       scrollTrigger: {
         trigger: hero,
         start: 'top top',
-        end: isMobile ? 'bottom top' : 'bottom 20%',
-        scrub: 0.6,
+        end: isMobile ? '70% top' : '45% top',
+        scrub: 0.35,
       },
     });
     exitTl
