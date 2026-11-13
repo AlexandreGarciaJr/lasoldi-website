@@ -1,5 +1,11 @@
 # DESIGN — La Soldi Capital
 
+> **Revisão do cliente (13/11/2026):** o site **não tem WhatsApp**. Todo contato passa pelo formulário: o botão do
+> topo virou **"Entre em contato"**, o do cabeçalho virou **"Contato"**, as linhas de *Para quem cuidamos* e o link do
+> método levam ao formulário já com a mensagem escrita, e o botão flutuante saiu. Os ícones dos princípios passaram a
+> ser da mesma família (traço fino) e as palavras em itálico do manifesto ficaram em musgo, mais pesadas.
+> As menções a WhatsApp abaixo são do planejamento original.
+
 ## 1. Design Read
 
 > Casa de investimentos do Sul, de mão de quem cuida: **editorial, quente e sóbria**. Papel de carta

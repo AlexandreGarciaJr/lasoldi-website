@@ -21,14 +21,14 @@ com o acabamento de um estúdio digital premiado.
 
 </div>
 
-![Topo do site no desktop: título "Investimentos com cuidado de perto.", botão de WhatsApp e a moeda-diamante em prata](.github/preview-desktop.jpg)
+![Topo do site no desktop: título "Investimentos com cuidado de perto.", botão "Entre em contato" e a moeda-diamante em prata](.github/preview-desktop.jpg)
 
 > **Versão de proposta.** Os textos foram escritos a partir do Brand Guide e são genéricos de propósito: o cliente
 > valida e completa com os dados reais (serviços, pessoas, contatos e avisos regulatórios). O site não exibe nenhum
 > número, certificação ou depoimento que não tenha sido confirmado.
 >
-> No preview (GitHub Pages, sem PHP) o formulário não envia e o WhatsApp ainda aponta para um número provisório. Os
-> dois passam a funcionar na hospedagem final, depois do checklist de [Publicar](#publicar).
+> No preview (GitHub Pages, sem PHP) o formulário não envia. Ele passa a funcionar na hospedagem final, depois do
+> checklist de [Publicar](#publicar).
 
 ---
 
@@ -103,7 +103,7 @@ saem de 55% e ganham tinta cheia conforme a leitura avança, e voltam a clarear 
 
 **Para quem cuidamos.** Uma lista editorial com quatro momentos de vida (famílias, empresários, planos para o futuro
 e transições de patrimônio). No hover, a linha se enche de ameixa a partir do lado em que o cursor entrou. Cada linha
-abre o WhatsApp com uma mensagem diferente, então o cliente já chega dizendo o que procura.
+leva ao formulário com a mensagem já escrita, então o cliente chega dizendo o que procura.
 
 ![Lista "Para quem cuidamos" com a segunda linha preenchida em ameixa](.github/preview-para-quem.jpg)
 
@@ -122,11 +122,12 @@ ameixa com os laços do padrão oficial nas bordas. Ela se abre pela gema e as p
 
 ![Pausa editorial em ameixa com a citação em Cormorant Garamond](.github/preview-citacao.jpg)
 
-**Contato em um toque.** O WhatsApp é a ação principal e abre com a mensagem já escrita. No celular, um botão
-flutuante fica ao alcance do polegar e some quando já existe outro botão de WhatsApp na tela. Para quem prefere,
-um formulário curto: dois campos obrigatórios e o consentimento LGPD.
+**Tudo leva ao formulário.** Por decisão do cliente, o site não tem WhatsApp: o botão do topo ("Entre em contato"),
+o do cabeçalho ("Contato"), as linhas de *Para quem cuidamos* e o link do método rolam até o formulário. Ele é curto
+(nome, telefone e consentimento LGPD obrigatórios) e, quando a pessoa vem de um perfil ou do método, o campo de
+mensagem já chega preenchido com o assunto.
 
-![Seção de contato com botão de WhatsApp e formulário](.github/preview-contato.jpg)
+![Seção de contato com o formulário](.github/preview-contato.jpg)
 
 <p align="center">
   <img src=".github/preview-mobile.jpg" alt="Topo do site no celular" width="250">
@@ -138,7 +139,7 @@ um formulário curto: dois campos obrigatórios e o consentimento LGPD.
 
 | | |
 |---|---|
-| **Conversão** | WhatsApp na primeira dobra no desktop e no celular, botões com verbo e benefício, uma única ação principal, sem urgência falsa nem promessa de rentabilidade |
+| **Conversão** | Botão para o formulário na primeira dobra no desktop e no celular, botões com verbo, uma única ação principal (o formulário), assunto pré-preenchido, sem urgência falsa nem promessa de rentabilidade |
 | **Acessibilidade** | Zero violações no axe (WCAG 2.1 AA) em desktop, tablet, celular e movimento reduzido. HTML semântico, foco visível, menu por teclado com Esc, erros do formulário anunciados |
 | **Movimento responsável** | Com "reduzir movimento" nada se move (nem a flutuação da moeda nem as órbitas) e o WebGL nem carrega. Sem JavaScript, todo o conteúdo aparece; se a animação falhar, um temporizador de segurança libera tudo |
 | **Mobile de verdade** | Pensado em 390×844 primeiro: moeda reposicionada, sem parallax, menu em tela cheia, shader com resolução reduzida |
@@ -157,7 +158,7 @@ pasta é o que vai para o servidor.
 index.html ─── CSS (tokens → base → layout → componentes → motion)
      │
      ├── main.js ──► smooth.js     rolagem suave (Lenis) e âncoras
-     │          ├──► nav.js        cabeçalho, menu, seção ativa, WhatsApp flutuante
+     │          ├──► nav.js        cabeçalho, menu e seção ativa
      │          ├──► hover.js      texto que rola, preenchimento, magnético, lista
      │          ├──► reveal.js     GSAP + ScrollTrigger + SplitText
      │          │      ├──► hero.js    entrada e saída dos textos do topo
@@ -176,19 +177,18 @@ Requer PHP 8.1+.
 php -S 127.0.0.1:8088
 ```
 
-Abra **http://127.0.0.1:8088**. Sem o `api/config.php`, o formulário responde com uma mensagem amigável indicando
-o WhatsApp; para testar o envio de verdade, crie o arquivo como descrito abaixo.
+Abra **http://127.0.0.1:8088**. Sem o `api/config.php`, o formulário responde com uma mensagem amigável; para testar o
+envio de verdade, crie o arquivo como descrito abaixo.
 
 ## Publicar
 
 Hospedagem compartilhada com Apache e PHP (HostGator, Hostinger). Antes de subir:
 
-1. **WhatsApp:** troque `5500000000000` pelo número real (55 + DDD + número) em `index.html` e `obrigado.html`.
-2. **E-mail do formulário:** copie `api/config.example.php` para `api/config.php` e preencha com o SMTP da hospedagem.
-3. **Dados de contato:** e-mail, horário e cidade no bloco de contato do `index.html`.
-4. **Rodapé e páginas legais:** razão social, CNPJ e o texto regulatório (`index.html`, `avisos.html`). Em
+1. **E-mail do formulário:** copie `api/config.example.php` para `api/config.php` e preencha com o SMTP da hospedagem.
+2. **Dados de contato:** e-mail, horário e cidade no bloco de contato do `index.html`.
+3. **Rodapé e páginas legais:** razão social, CNPJ e o texto regulatório (`index.html`, `avisos.html`). Em
    `privacidade.html`, preencha os trechos destacados em lilás.
-5. **Domínio:** se não for `lasoldicapital.com.br`, ajuste `canonical`, `og:*`, JSON-LD, `sitemap.xml`,
+4. **Domínio:** se não for `lasoldicapital.com.br`, ajuste `canonical`, `og:*`, JSON-LD, `sitemap.xml`,
    `robots.txt` e `.htaccess`.
 
 Envie o conteúdo da pasta para o `public_html/`, **sem** `_kit/`, `docs/`, `.github/` e arquivos `.md`
@@ -241,6 +241,7 @@ textos maiores ou menores. Cores, fontes, espaçamentos e tempos de animação f
 | **5. Motion** | GSAP, gema facetada, fio contínuo e shader da prata | ✅ |
 | **6. Segunda rodada** | Manifesto, Para quem cuidamos, hovers de estúdio, entrada e saída do topo, movimento contínuo, rolagem suave com Lenis | ✅ |
 | **7. Formulário** | PHPMailer com validação, anti-spam e LGPD | ✅ |
+| **7b. Revisão do cliente** | Sem WhatsApp (tudo leva ao formulário), ícones na mesma família, itálicos do manifesto em musgo | ✅ |
 | **8. QA** | Playwright + axe em 4 cenários, correções e revisão de conversão | ✅ |
 | **9. Dados do cliente** | Serviços, pessoas, contatos e textos regulatórios | ⏳ |
 | **10. Publicação** | Domínio, SMTP, envio real e Core Web Vitals em produção | ⏳ |

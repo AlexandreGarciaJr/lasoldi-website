@@ -39,7 +39,7 @@ Fonte: `LaSoldi_Capital_Brand_Guide_v4.pdf` (nov/2026, direção de arte Shiva M
 | Item | Decisão |
 |---|---|
 | Formato | **One-page** com âncoras + páginas legais (Privacidade, Avisos) |
-| Ação principal | **WhatsApp** com mensagem pronta (botão fixo e na 1ª dobra) |
+| Ação principal | **Formulário** (revisão do cliente: o site não tem WhatsApp). Botão "Entre em contato" na 1ª dobra e "Contato" no cabeçalho |
 | Ação secundária | **Formulário curto** no bloco de contato → PHPMailer |
 | Stack | **HTML + CSS + JS puros**, GSAP auto-hospedado, PHPMailer (ver DESIGN.md §7) |
 | Fotos | **Nenhuma por enquanto.** Direção de arte construída só com a identidade |
@@ -51,7 +51,7 @@ Fonte: `LaSoldi_Capital_Brand_Guide_v4.pdf` (nov/2026, direção de arte Shiva M
    textos legais obrigatórios (CVM/ANBIMA), o rodapé e o vocabulário ("assessoria", "consultoria", "gestão").
    Até lá, a copy usa termos neutros ("cuidado com o patrimônio", "estratégia", "acompanhamento").
 2. **Serviços reais**: o que de fato oferecem (investimentos, previdência, sucessão, câmbio, seguros...).
-3. **Contato:** número de WhatsApp, e-mail, endereço/cidade, horário, redes sociais.
+3. **Contato:** e-mail que recebe o formulário, telefone, endereço/cidade, horário, redes sociais.
 4. **Quem atende:** nome(s), cargo(s), registro profissional e, se possível, retrato(s).
 5. **Domínio e hospedagem:** confirmar `lasoldicapital.com.br` e onde vai ficar (HostGator/Hostinger),
    com SMTP para o PHPMailer.

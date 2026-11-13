@@ -4,15 +4,15 @@
 
 | Critério | Status | Observação |
 |---|---|---|
-| **5 segundos** (o que é, para quem, o que fazer) | ✅ | Eyebrow "Casa de investimentos · Sul do Brasil", H1, subtítulo com público e botão WhatsApp na 1ª dobra |
-| **Uma ação principal** | ✅ | WhatsApp em todos os pontos (cabeçalho, hero, método, contato, flutuante). O formulário é a alternativa, sem competir |
-| **Botão com verbo + benefício** | ✅ | "Conversar pelo WhatsApp", "Agendar uma primeira conversa", "Quero ser contatado" |
+| **5 segundos** (o que é, para quem, o que fazer) | ✅ | Eyebrow "Casa de investimentos · Sul do Brasil", H1, subtítulo com público e botão "Entre em contato" na 1ª dobra |
+| **Uma ação principal** | ✅ | O formulário (decisão do cliente: sem WhatsApp). Cabeçalho, topo, perfis e método levam até ele |
+| **Botão com verbo + benefício** | ✅ | "Entre em contato", "Agendar uma primeira conversa", "Quero ser contatado" |
 | **CTA na 1ª dobra, desktop e celular** | ✅ | Desktop 1440×900: CTA a ~720px. Celular 390×844: CTA termina a 726px |
 | **Prova ao lado da promessa** | ⚠️ pendente | Não há provas reais (anos, certificações, pessoas). O site **não exibe números**. Entra quando o cliente enviar (questionário, bloco 6) |
 | **Oferta clara** | ⚠️ parcial | Método em 4 etapas explica o que acontece. Lista real de serviços: pendente (bloco 2) |
 | **Objeções respondidas** | ⚠️ parcial | "Primeiro encontro, sem compromisso" e "linguagem simples" atacam as objeções típicas. FAQ só com as perguntas reais do cliente (bloco 5) |
-| **Atrito mínimo** | ✅ | 2 campos obrigatórios + consentimento; WhatsApp em 1 toque com mensagem pronta; máscara de telefone |
-| **Polegar** | ✅ | Botão flutuante de WhatsApp no canto inferior direito; some quando o CTA do hero ou o contato estão na tela, e com o menu aberto |
+| **Atrito mínimo** | ✅ | 2 campos obrigatórios + consentimento; assunto pré-preenchido quando a pessoa vem de um perfil ou do método; máscara de telefone |
+| **Polegar** | ✅ | Botão "Entre em contato" largo na 1ª dobra do celular e "Entre em contato" no menu aberto (o botão flutuante saiu com o WhatsApp) |
 | **Sem trecho morto antes do CTA** | ✅ | CTA no hero; o próximo CTA aparece ao fim do método |
 | **Sem dark patterns** | ✅ | Sem urgência, contador ou promessa de rentabilidade. Aviso de risco no rodapé |
 
