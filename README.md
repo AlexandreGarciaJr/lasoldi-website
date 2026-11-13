@@ -12,6 +12,7 @@ com o acabamento de um estúdio digital premiado.
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![GSAP](https://img.shields.io/badge/GSAP_3.15-0AE448?style=flat-square&logo=greensock&logoColor=black)
 ![WebGL](https://img.shields.io/badge/WebGL-990000?style=flat-square&logo=webgl&logoColor=white)
+![Lenis](https://img.shields.io/badge/Lenis-111111?style=flat-square)
 ![PHP](https://img.shields.io/badge/PHP_8-777BB4?style=flat-square&logo=php&logoColor=white)
 ![PHPMailer](https://img.shields.io/badge/PHPMailer-521942?style=flat-square)
 ![Apache](https://img.shields.io/badge/Apache-D22128?style=flat-square&logo=apache&logoColor=white)
@@ -106,6 +107,11 @@ abre o WhatsApp com uma mensagem diferente, então o cliente já chega dizendo o
 
 ![Lista "Para quem cuidamos" com a segunda linha preenchida em ameixa](.github/preview-para-quem.jpg)
 
+**Rolagem suave.** O [Lenis](https://lenis.darkroom.engineering) dá à roda do mouse e ao trackpad uma rolagem macia
+que assenta devagar, no mesmo relógio do GSAP (as animações ligadas à rolagem não "patinam"). Os links do menu deslizam
+até a seção, param logo abaixo do cabeçalho e levam o foco junto. No celular a rolagem continua nativa, e com
+"reduzir movimento" o Lenis nem é carregado.
+
 **O traço contínuo.** Em *Como cuidamos*, as quatro etapas são ligadas por um único fio com laços, inspirado no
 traço da assinatura, que se desenha conforme a rolagem.
 
@@ -150,7 +156,8 @@ pasta é o que vai para o servidor.
 ```text
 index.html ─── CSS (tokens → base → layout → componentes → motion)
      │
-     ├── main.js ──► nav.js        cabeçalho, menu, seção ativa, WhatsApp flutuante
+     ├── main.js ──► smooth.js     rolagem suave (Lenis) e âncoras
+     │          ├──► nav.js        cabeçalho, menu, seção ativa, WhatsApp flutuante
      │          ├──► hover.js      texto que rola, preenchimento, magnético, lista
      │          ├──► reveal.js     GSAP + ScrollTrigger + SplitText
      │          │      ├──► hero.js    entrada e saída dos textos do topo
@@ -210,8 +217,8 @@ textos maiores ou menores. Cores, fontes, espaçamentos e tempos de animação f
 │   └── lib/PHPMailer/
 ├── assets/
 │   ├── css/                 tokens, base, layout, componentes, interações, motion
-│   ├── js/                  main, nav, hero, reveal, facet, hover, coin-gl, form
-│   ├── vendor/              GSAP, ScrollTrigger e SplitText
+│   ├── js/                  main, smooth, nav, hero, reveal, facet, hover, coin-gl, form
+│   ├── vendor/              GSAP, ScrollTrigger, SplitText e Lenis
 │   ├── fonts/               Jost e Cormorant Garamond Italic (woff2)
 │   ├── brand/               logos, moeda e padrões oficiais
 │   ├── icons/               favicon, apple-touch-icon e ícones do manifest
@@ -232,7 +239,7 @@ textos maiores ou menores. Cores, fontes, espaçamentos e tempos de animação f
 | **3. Mensagem** | Arquitetura one-page e textos propostos, sem inventar dados | ✅ |
 | **4. Construção** | HTML semântico, design system em tokens, responsividade | ✅ |
 | **5. Motion** | GSAP, gema facetada, fio contínuo e shader da prata | ✅ |
-| **6. Segunda rodada** | Manifesto, Para quem cuidamos, hovers de estúdio, entrada e saída do topo, movimento contínuo | ✅ |
+| **6. Segunda rodada** | Manifesto, Para quem cuidamos, hovers de estúdio, entrada e saída do topo, movimento contínuo, rolagem suave com Lenis | ✅ |
 | **7. Formulário** | PHPMailer com validação, anti-spam e LGPD | ✅ |
 | **8. QA** | Playwright + axe em 4 cenários, correções e revisão de conversão | ✅ |
 | **9. Dados do cliente** | Serviços, pessoas, contatos e textos regulatórios | ⏳ |
@@ -243,6 +250,7 @@ textos maiores ou menores. Cores, fontes, espaçamentos e tempos de animação f
 - Projeto, direção criativa e desenvolvimento: [Alexandre Garcia](https://alexandregarcia.dev/)
 - Identidade visual La Soldi Capital: Shiva Marques (direção de arte)
 - Animações: [GSAP](https://gsap.com) (licença padrão GreenSock, gratuita)
+- Rolagem suave: [Lenis](https://github.com/darkroomengineering/lenis) (MIT)
 - Formulário: [PHPMailer](https://github.com/PHPMailer/PHPMailer) (LGPL 2.1)
 - Fontes: [Jost](https://fonts.google.com/specimen/Jost) e [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) (SIL Open Font License)
 

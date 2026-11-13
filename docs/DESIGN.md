@@ -68,7 +68,7 @@ Cormorant **só** em 3 momentos: tagline do hero, citação central e assinatura
 | **GSAP + ScrollTrigger** (auto-hospedado) | revelações de texto por linha, máscaras facetadas, parallax leve, contadores (só com dado real) | ~45 KB gz |
 | **WebGL puro (1 shader)** | reflexo metálico da moeda do hero, reagindo a scroll e ponteiro | ~4 KB, carregado após o LCP |
 | ~~Three.js~~ | **descartado**: a moeda é um disco plano com gema vazada; um shader 2D com normal map faz o brilho com 1/40 do peso. Um 3D girando competiria com o CTA | — |
-| ~~Lenis~~ | **descartado**: público prático, rolagem nativa é mais previsível (e melhor no iOS) | — |
+| **Lenis** | rolagem suave na roda do mouse e no trackpad (decisão revista na segunda rodada). Toque continua nativo; desligado com movimento reduzido; sincronizado com o ticker do GSAP | ~6 KB gz |
 
 **Fallback da moeda:** SVG oficial `Moeda_Prata` com o degradê do kit. É ele que aparece primeiro (é o LCP) e
 o canvas entra por cima com crossfade. Sem WebGL, com `prefers-reduced-motion` ou em aparelho fraco, o SVG fica.
@@ -100,7 +100,7 @@ lasoldi-website/
 ├─ assets/
 │  ├─ css/  tokens.css · base.css · layout.css · components.css · motion.css
 │  ├─ js/   main.js (boot) · reveal.js · facet.js · coin-gl.js · nav.js · form.js
-│  ├─ vendor/ gsap.min.js · ScrollTrigger.min.js
+│  ├─ vendor/ gsap.min.js · ScrollTrigger.min.js · SplitText.min.js · lenis.min.js
 │  ├─ fonts/  jost-var.woff2 · cormorant-italic.woff2
 │  └─ brand/  logo + moeda (SVG oficiais) · padrões (SVG tile otimizado)
 ├─ api/
