@@ -1,0 +1,34 @@
+/* =========================================================
+   Estados iniciais de animação.
+   Só valem com JS ativo E movimento permitido (classe .motion no <html>).
+   Sem JS, ou com prefers-reduced-motion, tudo aparece normalmente.
+   ========================================================= */
+
+.motion [data-reveal="fade"],
+.motion [data-reveal="line"],
+.motion [data-reveal="step"] {
+  opacity: 0;
+  transform: translate3d(0, var(--shift-y), 0);
+}
+
+.motion [data-split],
+.motion [data-split-words] { visibility: hidden; }
+
+.motion [data-facet] { opacity: 0; }
+
+/* fio do método: começa "não desenhado" */
+.motion .method__thread path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.motion .method__track { --thread-progress: 0; }
+
+/* linhas do SplitText com máscara: um pouco de folga para descendentes e acentos */
+.split-line-mask { padding-bottom: 0.08em; margin-bottom: -0.08em; padding-top: 0.06em; margin-top: -0.06em; }
+
+/* =========================================================
+   Movimento reduzido: só fades curtos (feitos pelo JS)
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

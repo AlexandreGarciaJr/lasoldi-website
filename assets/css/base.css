@@ -1,0 +1,58 @@
+/* ---------- reset enxuto ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body, h1, h2, h3, p, figure, blockquote, dl, dd, ol, ul { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+img, svg, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+/* ---------- base ---------- */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+h1, h2, h3 {
+  color: var(--ink-strong);
+  font-weight: 500;
+  line-height: var(--lh-head);
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+p { text-wrap: pretty; }
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+
+em { font-style: italic; }
+
+::selection { background: var(--ls-ameixa); color: var(--ls-linho); }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
+
+.skip-link {
+  position: absolute; left: var(--s-4); top: -100px; z-index: 100;
+  background: var(--ls-ameixa); color: var(--ls-linho);
+  padding: var(--s-3) var(--s-5); text-decoration: none;
+}
+.skip-link:focus { top: var(--s-4); }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}

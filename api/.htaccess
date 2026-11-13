@@ -1,0 +1,8 @@
+# Só o endpoint do formulário é acessível pela web.
+Options -Indexes
+<FilesMatch "^(config|config\.example)\.php$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_alias.c>
+  RedirectMatch 404 ^/api/lib/
+</IfModule>

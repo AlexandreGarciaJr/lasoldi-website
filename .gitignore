@@ -1,0 +1,15 @@
+# credenciais do formulário (nunca versionar)
+api/config.php
+
+# kit de marca original do cliente (os arquivos usados no site estão em assets/brand)
+_kit/
+
+# ferramentas locais
+.claude/
+node_modules/
+
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

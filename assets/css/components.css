@@ -1,0 +1,201 @@
+/* ---------- tipografia utilitária ---------- */
+.eyebrow {
+  font-size: var(--fs-eyebrow); font-weight: 500; text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow); color: var(--label);
+  display: flex; align-items: center; gap: var(--s-3);
+}
+.eyebrow::before {
+  content: ""; width: 32px; height: 1px; background: currentColor; flex: none;
+}
+.eyebrow--light { color: var(--ls-linho); }
+
+.h2 { font-size: var(--fs-h2); line-height: var(--lh-head); letter-spacing: -0.018em; }
+.h2--light { color: var(--ls-linho); }
+
+.prose p { color: var(--ink); max-width: 58ch; }
+.prose p + p { margin-top: var(--s-5); }
+.prose p:first-child { font-size: var(--fs-lead); line-height: 1.5; color: var(--ink-strong); }
+
+/* ---------- botões ---------- */
+.btn {
+  --btn-bg: var(--ls-ameixa);
+  --btn-fg: var(--ls-linho);
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-3);
+  min-height: 52px; padding: 14px 28px;
+  border: 0; border-radius: var(--radius-pill);
+  background: var(--btn-bg); color: var(--btn-fg);
+  font-weight: 500; font-size: 1rem; letter-spacing: 0.01em; line-height: 1.2;
+  text-decoration: none; white-space: nowrap;
+  transition: background-color var(--dur-base) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+/* fio de prata: aparece no hover/foco como acabamento metálico */
+.btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px;
+  background: var(--ls-prata);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity var(--dur-base) var(--ease-out);
+  pointer-events: none;
+}
+.btn > span, .btn__icon { position: relative; transition: transform var(--dur-base) var(--ease-out); }
+.btn__icon { width: 20px; height: 20px; flex: none; }
+.btn:active { transform: scale(0.98); }
+.btn:focus-visible::after { opacity: 1; }
+@media (hover: hover) {
+  .btn:hover::after { opacity: 1; }
+  .btn--primary:hover { background: #451338; }
+  .btn:hover > .btn__icon { transform: rotate(-8deg); }
+}
+
+.btn--sm { min-height: 44px; padding: 10px 22px; font-size: 0.95rem; }
+.btn--lg { min-height: 58px; padding: 16px 32px; font-size: 1.05rem; }
+.btn--block { width: 100%; }
+.btn--linho { --btn-bg: var(--ls-linho); --btn-fg: var(--ls-ameixa); }
+@media (hover: hover) { .btn--linho:hover { background: #fbf6f2; } }
+
+.link-arrow {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  color: var(--ink-strong); font-weight: 500; text-decoration: none;
+  padding-block: var(--s-2);
+  background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
+  transition: background-size 500ms var(--ease-lapida);
+}
+.link-arrow span { transition: transform 500ms var(--ease-lapida); }
+@media (hover: hover) {
+  .link-arrow:hover { background-size: 0% 1px; background-position: right bottom; }
+  .link-arrow:hover span { transform: translateX(6px); }
+}
+.link-arrow--strong { font-size: var(--fs-lead); }
+
+/* ---------- moeda do hero ---------- */
+.coin { position: relative; aspect-ratio: 1; width: 100%; }
+.coin__svg, .coin__gl { position: absolute; inset: 0; width: 100%; height: 100%; }
+.coin__gl { opacity: 0; transition: opacity 900ms var(--ease-out); }
+.coin.has-gl .coin__gl { opacity: 1; }
+.coin.has-gl .coin__svg { opacity: 0; transition: opacity 900ms var(--ease-out) 200ms; }
+
+/* ---------- princípios ---------- */
+.principle {
+  position: relative; padding-top: var(--s-6);
+  border-top: 1px solid var(--line-strong);
+}
+.principle__glyph { width: 40px; height: 40px; color: var(--ls-ameixa); margin-bottom: var(--s-5); }
+.principle__glyph--coin { width: 34px; height: 34px; margin-top: 3px; margin-bottom: calc(var(--s-5) + 3px); }
+.principle__glyph--word {
+  display: flex; align-items: center; width: auto; font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.42em; color: var(--ls-ameixa);
+}
+.principle__title { font-size: var(--fs-h3); margin-bottom: var(--s-3); }
+.principle p { color: var(--ink-soft); font-size: var(--fs-small); line-height: 1.6; max-width: 30ch; }
+@media (max-width: 599px) {
+  .principle { padding-block: var(--s-6); display: grid; grid-template-columns: 56px 1fr; column-gap: var(--s-4); }
+  .principle__glyph { grid-row: 1 / span 2; margin: 0; }
+  .principle__glyph--word { font-size: 0.6rem; letter-spacing: 0.2em; align-self: start; padding-top: 10px; }
+}
+
+/* ---------- etapas ---------- */
+.step__num {
+  display: block; font-size: clamp(2.6rem, 2rem + 2vw, 4rem); font-weight: 300; line-height: 1;
+  color: var(--ls-musgo); letter-spacing: -0.02em; margin-bottom: var(--s-5);
+  font-variant-numeric: tabular-nums;
+}
+.step__title { font-size: var(--fs-h3); margin-bottom: var(--s-3); }
+.step p { color: var(--ink-soft); font-size: var(--fs-small); line-height: 1.6; max-width: 28ch; }
+@media (max-width: 899px) {
+  .step { position: relative; }
+  .step::before {
+    content: ""; position: absolute; left: -34px; top: 1.1rem; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--ls-areia); border: 1px solid var(--ls-ameixa);
+  }
+  .step__num { font-size: 2.4rem; margin-bottom: var(--s-3); }
+}
+
+/* ---------- formulário ---------- */
+.contact__form-wrap { background: var(--ls-linho); color: var(--ink); }
+.form { padding: clamp(28px, 4vw, 56px); }
+.form__title { font-size: var(--fs-h3); }
+.form__hint { color: var(--ink-soft); font-size: var(--fs-small); margin-top: var(--s-2); margin-bottom: var(--s-6); }
+
+.field { margin-bottom: var(--s-5); }
+.field label { display: block; font-size: 0.9rem; font-weight: 500; color: var(--ink-strong); margin-bottom: var(--s-2); }
+.field__opt { font-weight: 400; color: var(--ink-soft); }
+.field input[type="text"], .field input[type="tel"], .field input[type="email"], .field textarea {
+  width: 100%; min-height: 48px; padding: 12px 0;
+  background: transparent; border: 0; border-bottom: 1px solid rgba(82, 25, 66, 0.35); border-radius: 0;
+  font-size: 1.05rem; color: var(--ink);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+.field textarea { resize: vertical; min-height: 84px; }
+.field input::placeholder { color: rgba(92, 74, 85, 0.55); }
+.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--ls-ameixa); box-shadow: 0 1px 0 0 var(--ls-ameixa); }
+.field input:focus-visible, .field textarea:focus-visible { outline: none; }
+.field.is-invalid input, .field.is-invalid textarea { border-bottom-color: #9b2c3a; }
+.field__error { color: #9b2c3a; font-size: 0.86rem; min-height: 0; margin-top: var(--s-1); }
+.field__error:empty { display: none; }
+
+.field--check { display: grid; grid-template-columns: 22px 1fr; gap: var(--s-3); align-items: start; margin-top: var(--s-6); }
+.field--check input {
+  appearance: none; width: 22px; height: 22px; margin: 2px 0 0; border: 1px solid rgba(82, 25, 66, 0.5);
+  background: transparent; display: grid; place-items: center; cursor: pointer;
+}
+.field--check input::after {
+  content: ""; width: 10px; height: 10px; background: var(--ls-ameixa);
+  clip-path: polygon(14% 44%, 0 59%, 39% 100%, 100% 21%, 85% 7%, 38% 70%);
+  transform: scale(0); transition: transform 240ms var(--ease-out);
+}
+.field--check input:checked::after { transform: scale(1); }
+.field--check input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.field--check label { font-weight: 400; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+.field--check .field__error { grid-column: 2; }
+
+.field--hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form .btn { margin-top: var(--s-5); }
+.form .btn[aria-busy="true"] { opacity: 0.7; pointer-events: none; }
+.form__status { margin-top: var(--s-4); font-size: 0.95rem; }
+.form__status:empty { display: none; }
+.form__status.is-error { color: #9b2c3a; }
+
+.form-success { padding: clamp(28px, 4vw, 56px); display: grid; gap: var(--s-4); }
+.form-success__coin { width: 48px; height: 48px; }
+.form-success h3 { font-size: var(--fs-h3); }
+.form-success p { color: var(--ink-soft); }
+
+/* ---------- WhatsApp flutuante (celular) ---------- */
+.wa-float {
+  position: fixed; z-index: 40; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom));
+  width: 58px; height: 58px; border-radius: 50%;
+  display: none; place-items: center;
+  background: var(--ls-ameixa); color: var(--ls-linho);
+  box-shadow: 0 10px 30px -10px rgba(58, 16, 48, 0.55);
+  transition: transform 500ms var(--ease-lapida), opacity 300ms linear;
+}
+.wa-float svg { width: 28px; height: 28px; }
+.wa-float.is-hidden { transform: translateY(140%); opacity: 0; pointer-events: none; }
+@media (max-width: 899px) { .wa-float { display: grid; } }
+
+/* ---------- páginas internas (legais) ---------- */
+.page-legal { padding-top: calc(var(--header-h) + var(--s-8)); padding-bottom: var(--section-y); }
+.page-legal .wrap { max-width: 860px; }
+.page-legal h1 { font-size: var(--fs-h2); margin: var(--s-4) 0 var(--s-6); }
+.page-legal h2 { font-size: var(--fs-h3); margin: var(--s-7) 0 var(--s-3); }
+.page-legal p, .page-legal li { color: var(--ink); max-width: 68ch; }
+.page-legal p + p { margin-top: var(--s-4); }
+.page-legal ul { list-style: disc; padding-left: 1.2em; margin-top: var(--s-3); }
+.page-legal li + li { margin-top: var(--s-2); }
+.pendente { background: var(--ls-lilas); padding: 0 0.3em; }
+
+/* ---------- dados de contato ---------- */
+.contact__data {
+  margin-top: var(--s-8); display: grid; gap: var(--s-5);
+  border-top: 1px solid rgba(241, 232, 226, 0.18); padding-top: var(--s-6);
+}
+.contact__data div { display: grid; gap: 2px; }
+.contact__data dt {
+  font-size: var(--fs-eyebrow); letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+  color: var(--ls-linho); opacity: 1;
+}
+.contact__data dd { color: var(--ls-linho); }
+.contact__data a { color: var(--ls-linho); text-decoration-color: rgba(241, 232, 226, 0.4); }
+.contact__data a:hover { text-decoration-color: currentColor; }

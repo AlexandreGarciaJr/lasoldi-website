@@ -1,0 +1,96 @@
+/* =========================================================
+   La Soldi Capital · Design tokens
+   Fonte: Brand Guide v4 (nov/2026) + kit 04_Cores
+   ========================================================= */
+
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/jost-var.woff2") format("woff2");
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../fonts/cormorant-italic.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ---- primitivos (paleta oficial) ---- */
+  --ls-areia: #e0cfc4;
+  --ls-linho: #f1e8e2;
+  --ls-ameixa: #521942;
+  --ls-oliva: #78866a;
+  --ls-musgo: #566449;
+  --ls-salvia: #a3a18a;
+  --ls-lavanda: #b981ba;
+  --ls-lilas: #dfc8df;
+
+  /* prata: degradês oficiais (nunca cinza chapado) */
+  --ls-prata: linear-gradient(135deg, #f6f7f9 0%, #c2c6cb 18%, #eef0f2 38%, #9299a1 55%, #e2e5e8 72%, #a9aeb5 88%, #d8dbdf 100%);
+  --ls-prata-claro: linear-gradient(135deg, #e4e7ea 0%, #9da3aa 20%, #d3d7db 40%, #6f767e 58%, #c4c8cd 75%, #858c94 100%);
+
+  /* ---- semânticos ---- */
+  --bg: var(--ls-linho);
+  --bg-alt: var(--ls-areia);
+  --ink: #3a1030;            /* ameixa escurecida para texto corrido (AA garantido) */
+  --ink-strong: var(--ls-ameixa);
+  --ink-soft: #5c4a55;       /* texto secundário sobre linho/areia */
+  --label: #47533c;          /* oliva escurecido: rótulos legíveis (AA) */
+  --accent: var(--ls-ameixa);
+  --on-accent: var(--ls-linho);
+  --line: rgba(82, 25, 66, 0.16);
+  --line-strong: var(--ls-salvia);
+  --focus: var(--ls-lavanda);
+
+  /* ---- tipografia ---- */
+  --font-sans: "Jost", "Avenir Next", "Avenir", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+
+  --fs-display: clamp(2.55rem, 1.2rem + 4.6vw, 4.85rem);
+  --fs-h2: clamp(1.95rem, 1.2rem + 2.4vw, 3.05rem);
+  --fs-h3: clamp(1.2rem, 1.05rem + 0.4vw, 1.4rem);
+  --fs-lead: clamp(1.1rem, 1rem + 0.45vw, 1.3rem);
+  --fs-body: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  --fs-small: 0.9375rem;
+  --fs-eyebrow: 0.78rem;
+  --fs-quote: clamp(2.1rem, 1.2rem + 3.6vw, 4.2rem);
+  --fs-tagline: clamp(1.6rem, 1.1rem + 1.6vw, 2.4rem);
+
+  --lh-tight: 1.08;
+  --lh-head: 1.15;
+  --lh-body: 1.5;
+  --track-eyebrow: 0.32em;
+
+  /* ---- espaço (base 4) ---- */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 72px; --s-9: 112px; --s-10: 160px;
+  --section-y: clamp(72px, 4rem + 6vw, 160px);
+  --gutter: clamp(16px, 2vw, 32px);
+  --margin-x: clamp(20px, 5vw, 88px);
+  --content-max: 1320px;
+  --header-h: 96px;
+
+  /* ---- forma ---- */
+  --radius-0: 0;
+  --radius-pill: 999px;
+
+  /* ---- motion ---- */
+  --ease-lapida: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-micro: 180ms;
+  --dur-base: 600ms;
+  --dur-reveal: 900ms;
+  --dur-facet: 1200ms;
+  --shift-y: 24px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --shift-y: 16px;
+    --header-h: 84px;
+  }
+}

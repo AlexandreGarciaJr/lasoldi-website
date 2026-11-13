@@ -1,0 +1,11 @@
+{
+  "name": "La Soldi Capital",
+  "short_name": "La Soldi",
+  "icons": [
+    { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#E0CFC4",
+  "background_color": "#F1E8E2",
+  "display": "browser"
+}
