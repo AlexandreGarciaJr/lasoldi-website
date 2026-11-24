@@ -388,3 +388,12 @@ h3 { font-size: var(--fs-h3); font-weight: 500; letter-spacing: -0.005em; }
 }
 .ticker__row--alt .ticker__track i { background: linear-gradient(135deg, #e8cf9a, #b9944f 45%, #e4c88f 70%, #9e7a3c); }
 @media (prefers-reduced-motion: reduce) { .ticker__row { width: auto; flex-wrap: wrap; } .ticker__row .ticker__track + .ticker__track { display: none; } }
+
+/* ---------- lente lapidada (WebGL) nas fotos das sócias ---------- */
+.lens__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ceo__shape img { transition: opacity 400ms linear; }
+.lens--ready img { opacity: 0; }
+.ceo__cut { transform-style: preserve-3d; will-change: transform; }
+.ceo__name .split-word, .ceo__name > div { display: inline-block; }
+/* a lente substitui o cursor só quando o WebGL está ativo */
+@media (hover: hover) and (pointer: fine) { .ceo__frame:has(.lens--ready) { cursor: none; } }

@@ -55,7 +55,14 @@ aparece no topo, sobre a foto do "Para quem" e no painel da citação, onde as m
 faces da moeda, que cresce e gira até cobrir o elemento. As fotos das sócias usam a moldura com cantos cortados do
 protótipo, que segue as mesmas faces.
 
-![Sócias em molduras lapidadas, com contorno ameixa deslocado](.github/preview-socias.jpg)
+**Lente lapidada nas sócias.** As fotos das fundadoras são desenhadas em WebGL e, no desktop, o cursor vira uma
+pequena gema de 5 faces que refrata a imagem como um diamante: a mesa central amplia, cada faceta desvia a foto na
+direção da sua face, com leve dispersão de cor e brilho prata nas arestas. Fora da lente, a foto fica intacta. O
+cartão inclina em 3D na direção do mouse enquanto o contorno ameixa se desloca ao contrário, a foto entra com uma onda
+que assenta, ondula de leve com a velocidade da rolagem e o nome entra letra a letra. No celular ficam a onda e a
+ondulação; com "reduzir movimento" ou sem WebGL, a foto normal.
+
+![Sócias em molduras lapidadas, com a lente em forma de gema sobre uma das fotos](.github/preview-socias.jpg)
 
 **Faixa de soluções.** Entre "Para quem" e "Como cuidamos", duas linhas gigantes correm em sentidos opostos com as
 frentes reais do grupo (antecipação de recebíveis, crédito com garantia real, imobiliário e construção, frotas,
@@ -83,7 +90,7 @@ com preenchimento que nasce do cursor, texto que rola e efeito magnético, e rol
 
 | | |
 |---|---|
-| **3D responsável** | A cena carrega só depois do conteúdo, pausa fora da tela e com a aba oculta, limita a resolução (1,75× no desktop, 1,6× no celular) e usa malhas instanciadas: 6 chamadas de desenho por área |
+| **3D responsável** | Moedas e lente dividem um único arquivo do Three.js, que carrega só depois do conteúdo; as cenas pausa fora da tela e com a aba oculta, limita a resolução (1,75× no desktop, 1,6× no celular) e usa malhas instanciadas: 6 chamadas de desenho por área |
 | **Plano B** | Sem WebGL, entram moedas renderizadas (imagens) paradas no lugar. Com "reduzir movimento", a cena mostra um quadro parado e nada se move |
 | **Mobile de verdade** | Menos moedas, sem desvio do cursor, menu em tela cheia, botões largos e nenhum efeito que dependa de hover |
 | **Acessibilidade** | Zero violações no axe (WCAG 2.1 AA) em desktop, tablet, celular e movimento reduzido. A faixa animada tem versão em lista para leitores de tela |
@@ -97,14 +104,15 @@ index.html ── CSS (tokens → base → site → motion)
    │
    └── main.js ─► nav.js · form.js · hover.js · smooth.js (Lenis)
                 ├► reveal.js ─► hero.js · ticker.js · facet.js (gema)
-                └► coins.js ─► coins.bundle.js  (Three.js, carregado sob demanda)
+                ├► coins.js ─► 3d/coins.js ─┐
+                └► lens.js  ─► 3d/lens.js  ─┴► 3d/three-[hash].js  (Three.js compartilhado, sob demanda)
                                     ▲
-                     src/coins/index.js  ── npm run build:coins (esbuild)
+                src/coins + src/lens  ── npm run build:3d (esbuild, com divisão de código)
 
 formulário ─► api/contato.php ─► PHPMailer (SMTP da hospedagem)
 ```
 
-Só a cena das moedas tem build: o resto do site é HTML, CSS e JavaScript puros, servidos como estão.
+Só as cenas 3D (moedas e lente) têm build: o resto do site é HTML, CSS e JavaScript puros, servidos como estão.
 
 ## Rodar localmente
 
@@ -112,13 +120,13 @@ Só a cena das moedas tem build: o resto do site é HTML, CSS e JavaScript puros
 npm install
 ```
 ```bash
-npm run build:coins
+npm run build:3d
 ```
 ```bash
 php -S 127.0.0.1:8088
 ```
 
-O `coins.bundle.js` já vem gerado; o `npm run build:coins` só é necessário depois de mexer em `src/coins/`.
+A pasta `assets/js/3d/` já vem gerada; o `npm run build:3d` só é necessário depois de mexer em `src/`.
 
 ## Publicar
 
@@ -132,11 +140,12 @@ Envie para o `public_html/` **sem** `_kit/`, `docs/`, `src/`, `node_modules/`, `
 
 ```text
 ├── index.html · privacidade.html · avisos.html · obrigado.html
-├── src/coins/index.js        cena 3D das moedas (fonte)
+├── src/coins · src/lens      cenas 3D das moedas e da lente (fonte)
 ├── api/                      contato.php, config.example.php, PHPMailer
 ├── assets/
 │   ├── css/                  tokens, base, site, motion
-│   ├── js/                   main, nav, form, hover, smooth, reveal, hero, ticker, facet, coins (+ coins.bundle.js)
+│   ├── js/                   main, nav, form, hover, smooth, reveal, hero, ticker, facet, coins, lens
+│   ├── js/3d/                cenas 3D geradas (coins, lens e o Three.js compartilhado)
 │   ├── vendor/               GSAP, ScrollTrigger, SplitText, Lenis
 │   ├── img/fotos/            fotos do protótipo aprovado (V02)
 │   ├── img/moedas/           moedas renderizadas (plano B sem WebGL)
@@ -154,6 +163,7 @@ Envie para o `public_html/` **sem** `_kit/`, `docs/`, `src/`, `node_modules/`, `
 | **V2 · leitura** | Protótipo aprovado (PDF + HTML), dossiê do Grupo Diamond e correções da proprietária | ✅ |
 | **V2 · 3D** | Moedas em Three.js nos três metais do grupo, com plano B e versão mobile | ✅ |
 | **V2 · site** | Layout do protótipo, textos novos, faixa de soluções, efeitos e QA | ✅ |
+| **V2 · sócias** | Lente lapidada em WebGL, inclinação 3D e nome letra a letra | ✅ |
 | **Dados do cliente** | Fotos confirmadas das sócias, foto do "Para quem", CNPJ e conteúdos | ⏳ |
 | **Publicação** | Domínio, SMTP e Core Web Vitals em produção | ⏳ |
 

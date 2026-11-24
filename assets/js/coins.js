@@ -1,4 +1,4 @@
-// Carrega a chuva de moedas 3D (assets/js/coins.bundle.js, gerado de src/coins/)
+// Carrega a chuva de moedas 3D (assets/js/3d/coins.js, gerado de src/coins/)
 // em cada área [data-coins]. A velocidade de rolagem acelera a queda.
 // Se o WebGL não existir ou o carregamento falhar, entram moedas renderizadas
 // (imagens) paradas no lugar: a página nunca fica vazia nem quebra.
@@ -56,7 +56,7 @@ export async function initCoins({ reduced = false } = {}) {
   }
 
   try {
-    const { createCoinRain } = await import('./coins.bundle.js');
+    const { createCoinRain } = await import('./3d/coins.js');
     boxes.forEach((box) => {
       try { createCoinRain(box, { reduced, boostSource: () => boost, ...(ZONES[box.dataset.coins] || {}) }); }
       catch (err) { console.warn('[moedas] fallback:', err); staticCoins(box); }

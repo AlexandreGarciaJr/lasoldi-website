@@ -5,6 +5,7 @@ import { initReveals } from './reveal.js';
 import { initHover } from './hover.js';
 import { initSmooth } from './smooth.js';
 import { initCoins } from './coins.js';
+import { initLens } from './lens.js';
 
 const yearEl = document.querySelector('[data-year]');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -30,6 +31,6 @@ if (motionOK && hasGsap) {
 }
 
 // A cena 3D entra depois do primeiro paint: não compete com o conteúdo.
-const startCoins = () => initCoins({ reduced: !motionOK });
+const startCoins = () => { initCoins({ reduced: !motionOK }); initLens({ reduced: !motionOK }); };
 if ('requestIdleCallback' in window) requestIdleCallback(startCoins, { timeout: 1800 });
 else setTimeout(startCoins, 700);

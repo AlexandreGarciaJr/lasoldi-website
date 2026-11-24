@@ -59,6 +59,35 @@ export function initReveals() {
   }
 
   // ---------- fundadoras: o painel abre pela gema, a foto assenta ----------
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // nome entra letra a letra (por palavra, para nunca quebrar no meio)
+  const nameChars = (ceo) => {
+    const el = ceo.querySelector('.ceo__name');
+    // leitores de tela leem o nome inteiro; as letras animadas ficam escondidas deles
+    const sr = document.createElement('span'); sr.className = 'visually-hidden'; sr.textContent = el.textContent;
+    el.before(sr); el.setAttribute('aria-hidden', 'true');
+    const split = SplitText.create(el, { type: 'words,chars', aria: 'none' });
+    gsap.set(split.words, { perspective: 400 });
+    return split.chars;
+  };
+  // inclinação 3D: a foto inclina para o cursor e o contorno ameixa se desloca ao contrário
+  const tilt = (ceo) => {
+    const frame = ceo.querySelector('.ceo__frame');
+    const cut = ceo.querySelector('.ceo__cut');
+    const line = ceo.querySelector('.ceo__line');
+    gsap.set(frame, { perspective: 1100 });
+    const rx = gsap.quickTo(cut, 'rotationX', { duration: 0.8, ease: 'power3.out' });
+    const ry = gsap.quickTo(cut, 'rotationY', { duration: 0.8, ease: 'power3.out' });
+    const lx = gsap.quickTo(line, 'x', { duration: 0.9, ease: 'power3.out' });
+    const ly = gsap.quickTo(line, 'y', { duration: 0.9, ease: 'power3.out' });
+    frame.addEventListener('pointermove', (e) => {
+      const r = frame.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5, ny = (e.clientY - r.top) / r.height - 0.5;
+      ry(nx * 7); rx(-ny * 6); lx(-nx * 16); ly(-ny * 16);
+    });
+    frame.addEventListener('pointerleave', () => { rx(0); ry(0); lx(0); ly(0); });
+  };
+
   document.querySelectorAll('[data-ceo]').forEach((ceo, i) => {
     const cut = ceo.querySelector('.ceo__cut');
     const img = cut.querySelector('img');
@@ -67,7 +96,9 @@ export function initReveals() {
       .add(facetReveal(cut, { rotate: i ? 12 : -12, ox: 0.5, oy: 0.45, duration: 1.25 }))
       .from(img, { scale: 1.18, duration: 1.6, ease: 'power3.out' }, 0)
       .from(ceo.querySelector('.ceo__line'), { opacity: 0, x: 14, y: 14, duration: 1, ease: T.ease }, 0.5)
-      .from(ceo.querySelectorAll('figcaption > span'), { opacity: 0, y: 16, stagger: 0.08, duration: 0.8, ease: T.ease }, 0.7);
+      .from(nameChars(ceo), { yPercent: 110, rotateX: -70, opacity: 0, duration: 0.9, stagger: 0.022, ease: 'power3.out' }, 0.75)
+      .from(ceo.querySelectorAll('.ceo__role, .ceo__bio'), { opacity: 0, y: 16, stagger: 0.1, duration: 0.8, ease: T.ease }, 1.05);
+    if (fine) tilt(ceo);
     if (!isMobile) gsap.to(img, { yPercent: -6, ease: 'none', scrollTrigger: { trigger: ceo, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
