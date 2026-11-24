@@ -4,28 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <script>
-    // Habilita estados iniciais de animação só quando há JS e o usuário aceita movimento.
+    // Estados iniciais de animação só com JS e movimento permitido; segurança se o JS não iniciar.
     document.documentElement.classList.add('js');
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
-    // Segurança: se o JS de animação não iniciar, o conteúdo aparece mesmo assim.
     setTimeout(function () { if (!window.__lsMotionReady) document.documentElement.classList.remove('motion'); }, 3500);
   </script>
 
-  <title>La Soldi Capital · Investimentos com cuidado de perto</title>
-  <meta name="description" content="Casa de investimentos no Sul do Brasil. Atendimento próximo para famílias e investidores que valorizam tradição, segurança e visão de longo prazo.">
+  <title>La Soldi Capital · Soluções financeiras com cuidado de perto</title>
+  <meta name="description" content="Casa de soluções financeiras do Grupo Diamond. Crédito, antecipação de recebíveis e estruturação de capital para empresas, com proximidade, tradição e segurança.">
   <link rel="canonical" href="https://lasoldicapital.com.br/">
-  <meta name="theme-color" content="#E0CFC4">
+  <meta name="theme-color" content="#F3F1ED">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="La Soldi Capital">
-  <meta property="og:title" content="La Soldi Capital · Investimentos com cuidado de perto">
-  <meta property="og:description" content="Atendimento próximo para famílias e investidores que valorizam tradição, segurança e visão de longo prazo.">
+  <meta property="og:title" content="La Soldi Capital · Da conversa ao capital">
+  <meta property="og:description" content="Casa de soluções financeiras que une proximidade, tradição e segurança para reorganizar o patrimônio e o fluxo de caixa da sua empresa.">
   <meta property="og:url" content="https://lasoldicapital.com.br/">
   <meta property="og:image" content="https://lasoldicapital.com.br/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Assinatura La Soldi Capital sobre fundo areia, com a frase Patrimônio que se lapida.">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
@@ -34,13 +32,11 @@
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preload" href="assets/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/brand/moeda-prata-claro.svg" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/img/fotos/hero-empresario.webp" as="image" fetchpriority="high">
 
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="assets/css/interactions.css">
+  <link rel="stylesheet" href="assets/css/site.css">
   <link rel="stylesheet" href="assets/css/motion.css">
 
   <script type="application/ld+json">
@@ -48,12 +44,15 @@
     "@context": "https://schema.org",
     "@type": "FinancialService",
     "name": "La Soldi Capital",
+    "slogan": "Da conversa ao capital.",
     "url": "https://lasoldicapital.com.br/",
     "logo": "https://lasoldicapital.com.br/assets/brand/logo-ameixa-prata.svg",
     "image": "https://lasoldicapital.com.br/assets/img/og-image.png",
-    "slogan": "Patrimônio que se lapida.",
-    "description": "Casa de investimentos no Sul do Brasil, com atendimento próximo para famílias e investidores.",
-    "areaServed": "Sul do Brasil"
+    "email": "atendimento@lasoldicapital.com.br",
+    "description": "Casa de soluções financeiras para empresas: crédito, antecipação de recebíveis e estruturação de capital.",
+    "parentOrganization": { "@type": "Organization", "name": "Grupo Diamond" },
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "areaServed": "BR"
   }
   </script>
 </head>
@@ -61,351 +60,257 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- ============ CABEÇALHO ============ -->
-  <header class="site-header" data-header>
-    <div class="site-header__inner wrap">
-      <a class="site-header__brand" href="#topo" aria-label="La Soldi Capital, voltar ao início">
-        <img src="assets/brand/logo-ameixa-prata.svg" alt="La Soldi Capital" width="168" height="75">
+  <header class="nav" data-header>
+    <div class="wrap nav__in">
+      <a class="nav__logo" href="#topo" aria-label="La Soldi Capital, início">
+        <img src="assets/brand/logo-ameixa-prata.svg" alt="La Soldi Capital" width="132" height="59">
       </a>
-
-      <nav class="site-nav" aria-label="Principal">
-        <ul class="site-nav__list" id="menu-principal" data-menu>
+      <nav class="nav__menu" aria-label="Principal">
+        <ul class="nav__list" id="menu-principal" data-menu>
           <li><a href="#quem-somos" data-nav>Quem somos</a></li>
           <li><a href="#para-quem" data-nav>Para quem</a></li>
           <li><a href="#como-cuidamos" data-nav>Como cuidamos</a></li>
-          <li class="site-nav__cta-mobile">
-            <a class="btn btn--primary" href="#contato"><span>Entre em contato</span></a>
-          </li>
+          <li><a href="#conteudos" data-nav>Conteúdos</a></li>
+          <li class="nav__cta-mobile"><a class="btn btn--solid" href="#contato"><span class="btn__fill"></span><span>Agendar conversa</span></a></li>
         </ul>
       </nav>
-
-      <a class="btn btn--primary btn--sm site-header__cta" href="#contato"><span>Contato</span></a>
-
+      <a class="btn btn--line btn--sm nav__cta" href="#contato" data-magnetic><span class="btn__fill"></span><span>Agendar conversa</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-toggle>
-        <span class="menu-toggle__label">Menu</span>
-        <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
+        <span class="menu-toggle__label">Menu</span><span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
       </button>
     </div>
   </header>
 
   <main id="conteudo">
 
-    <!-- ============ M1 · HERO ============ -->
+    <!-- ============ 01 · HERO ============ -->
     <section class="hero" id="topo" aria-labelledby="hero-titulo">
-      <div class="hero__pattern" aria-hidden="true">
-        <span class="orbit orbit--a"><i></i></span>
-        <span class="orbit orbit--b"><i></i></span>
-      </div>
-      <div class="hero__inner wrap">
-        <div class="hero__copy">
-          <p class="eyebrow" data-hero="eyebrow"><span class="visually-hidden">Casa de investimentos · Sul do Brasil</span><span aria-hidden="true" data-hero-chars>Casa de investimentos · Sul do Brasil</span></p>
-          <h1 class="hero__title" id="hero-titulo" data-split>Investimentos com cuidado de perto.</h1>
-          <p class="hero__lead" data-hero="lead">
-            Atendemos famílias e investidores que valorizam proximidade, tradição e segurança,
-            com atenção pessoal a cada decisão e visão de longo prazo.
-          </p>
+      <div class="wrap hero__in">
+        <div class="hero__text">
+          <p class="eyebrow" data-hero="eyebrow"><span class="visually-hidden">Casa de soluções financeiras · Sul do Brasil</span><span aria-hidden="true" data-hero-chars>Casa de soluções financeiras · Sul do Brasil</span></p>
+          <h1 class="hero__title" id="hero-titulo" data-split="hero">Investimento com <span class="accent">cuidado</span> de perto.</h1>
+          <p class="hero__lead" data-hero="lead">Uma casa de soluções financeiras que une proximidade, tradição e segurança para reorganizar o seu patrimônio e o seu fluxo de caixa com visão de longo prazo.</p>
           <div class="hero__actions" data-hero="actions">
-            <a class="btn btn--primary btn--lg" href="#contato">
-              <span>Entre em contato</span>
-              <svg class="btn__icon btn__icon--arrow" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>
-            </a>
+            <a class="btn btn--solid btn--lg" href="#contato" data-magnetic><span class="btn__fill"></span><span>Agendar uma conversa</span></a>
+            <a class="link" href="#quem-somos"><span data-roll>Conheça a La Soldi</span></a>
           </div>
+          <p class="hero__tag" data-hero="tag">Da conversa ao capital.</p>
         </div>
 
-        <figure class="hero__coin" aria-hidden="true">
-          <div class="coin__float"><div class="coin" data-facet="hero">
-            <img class="coin__svg" src="assets/brand/moeda-prata-claro.svg" alt="" width="600" height="600" fetchpriority="high">
-            <canvas class="coin__gl" data-coin-gl></canvas>
-          </div></div>
-        </figure>
-
-        <p class="hero__tagline" data-hero="tagline"><em>Patrimônio que se lapida.</em></p>
+        <div class="hero__media">
+          <figure class="photo" data-facet="hero">
+            <img src="assets/img/fotos/hero-empresario.webp" alt="Empresário observando a cidade pela janela do escritório" width="1000" height="1250" fetchpriority="high" style="object-position:55% 30%">
+          </figure>
+          <!-- chuva de moedas 3D (prata, ouro e bronze: as três empresas do Grupo Diamond) -->
+          <div class="coins coins--hero" data-coins="hero" aria-hidden="true"></div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ M2 · QUEM SOMOS ============ -->
-    <section class="section section--linho about" id="quem-somos" aria-labelledby="about-titulo">
-      <div class="wrap grid">
-        <header class="about__head">
-          <p class="eyebrow" data-reveal="fade">Quem somos</p>
-          <h2 class="h2" id="about-titulo" data-split>Uma casa de investimentos com mão de quem cuida.</h2>
-        </header>
+    <!-- ============ 02 · CONFIANÇA ============ -->
+    <section class="trust" aria-label="A La Soldi em números">
+      <div class="wrap trust__in">
+        <div class="trust__item" data-reveal><span class="trust__num"><span data-count="25">25</span> anos</span><span class="trust__txt">de experiência da equipe no mercado financeiro</span></div>
+        <div class="trust__item" data-reveal><span class="trust__num">R$ <span data-count="1">1</span> bi</span><span class="trust__txt">em patrimônio assessorado</span></div>
+        <div class="trust__item" data-reveal><span class="trust__num">Atendimento</span><span class="trust__txt">dedicado, presencial e online</span></div>
+        <div class="trust__item" data-reveal><span class="trust__num">Grupo Diamond</span><span class="trust__txt">relacionamento, crédito e banco no mesmo grupo</span></div>
+      </div>
+    </section>
 
-        <div class="about__text prose" data-reveal="fade">
-          <p>
-            A La Soldi Capital nasceu de um gesto simples: assinar embaixo. Cada cliente é atendido de perto,
-            por quem conhece sua história, seus planos e o seu tempo.
-          </p>
-          <p>
-            Acreditamos que patrimônio não se constrói com pressa. Ele se lapida: com escolhas cuidadosas,
-            acompanhamento constante e a paciência de quem pensa em gerações, não em semanas.
-          </p>
+    <!-- ============ 03 · QUEM SOMOS ============ -->
+    <section class="section about" id="quem-somos" aria-labelledby="about-titulo">
+      <div class="wrap">
+        <div class="about__lead">
+          <div class="stack">
+            <p class="eyebrow" data-reveal>Quem somos</p>
+            <h2 id="about-titulo" data-split>Cada necessidade recebe um <span class="accent">cuidado próprio.</span></h2>
+          </div>
+          <p class="manifesto" data-manifesto>Cuidamos de cada demanda como quem lapida uma pedra: com <em>paciência</em>, método e atenção a cada detalhe. Antes de recomendar, escutamos. Depois, estruturamos a solução e acompanhamos cada etapa com você, <em>da conversa ao capital.</em></p>
         </div>
 
-        <ul class="principles" aria-label="Nossos princípios">
-          <li class="principle" data-reveal="line">
-            <svg class="principle__glyph" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-laco"/></svg>
-            <h3 class="principle__title">Proximidade</h3>
-            <p>Você fala com quem cuida do seu patrimônio. Sem intermediários, sem roteiro pronto.</p>
-          </li>
-          <li class="principle" data-reveal="line">
-            <svg class="principle__glyph" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-moeda"/></svg>
-            <h3 class="principle__title">Solidez</h3>
-            <p>Decisões com fundamento, explicadas com clareza, no seu ritmo.</p>
-          </li>
-          <li class="principle" data-reveal="line">
-            <svg class="principle__glyph" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-gema"/></svg>
-            <h3 class="principle__title">Permanência</h3>
-            <p>Pensamos no longo prazo: o que é bem cuidado, dura.</p>
-          </li>
-          <li class="principle" data-reveal="line">
-            <svg class="principle__glyph" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-pilar"/></svg>
-            <h3 class="principle__title">Rigor</h3>
-            <p>Método, transparência e respeito às regras do mercado financeiro.</p>
-          </li>
-        </ul>
+        <!-- PENDENTE: confirmar quem é quem nas fotos (fotos do protótipo V02) -->
+        <div class="ceos">
+          <figure class="ceo" data-ceo>
+            <div class="ceo__frame">
+              <div class="ceo__line" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="16,0 100,0 100,84 84,100 0,100 0,13" /></svg></div>
+              <div class="ceo__cut"><div class="ceo__shape"><img src="assets/img/fotos/socia-1.webp" alt="Patrícia Almeida, co-founder e CEO da La Soldi Capital" width="880" height="1100" loading="lazy"></div></div>
+            </div>
+            <figcaption><span class="ceo__name">Patrícia Almeida</span><span class="ceo__role">Co-founder &amp; CEO</span><span class="ceo__bio">Conduz a frente comercial e o relacionamento com clientes e parceiros. Mais de 17 anos conectando negócios e capital.</span></figcaption>
+          </figure>
+          <figure class="ceo" data-ceo>
+            <div class="ceo__frame">
+              <div class="ceo__line" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="16,0 100,0 100,84 84,100 0,100 0,13" /></svg></div>
+              <div class="ceo__cut"><div class="ceo__shape"><img src="assets/img/fotos/socia-2.webp" alt="Luciana Amaral, co-founder e CEO da La Soldi Capital" width="880" height="1100" loading="lazy"></div></div>
+            </div>
+            <figcaption><span class="ceo__name">Luciana Amaral</span><span class="ceo__role">Co-founder &amp; CEO</span><span class="ceo__bio">Mais de 20 anos no mercado financeiro, com passagem pelo Banco Safra e experiência em FIDCs e direitos creditórios.</span></figcaption>
+          </figure>
+        </div>
+
+        <div class="principles">
+          <div class="principle" data-principle><h3>Proximidade</h3><p>Atendimento próximo, com quem entende o seu negócio.</p></div>
+          <div class="principle" data-principle><h3>Solidez</h3><p>Decisões apoiadas em análise e prudência.</p></div>
+          <div class="principle" data-principle><h3>Permanência</h3><p>Relações de longo prazo com clientes e parceiros.</p></div>
+          <div class="principle" data-principle><h3>Rigor</h3><p>Método, transparência e revisão constante.</p></div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ M2b · MANIFESTO ============ -->
-    <section class="section section--areia manifesto" aria-label="Manifesto">
+    <!-- ============ 04 · PARA QUEM ============ -->
+    <section class="section who" id="para-quem" aria-labelledby="who-titulo">
       <div class="wrap">
-        <p class="eyebrow" data-reveal="fade">Nosso jeito</p>
-        <p class="manifesto__text" data-manifesto>
-          Cuidar de patrimônio é um trabalho de <em>paciência</em>. Não de pressa, nem de promessas.
-          É ouvir antes de recomendar, explicar cada escolha e revisar o caminho com <em>atenção</em>,
-          ano após ano, para que o que foi construído com esforço <em>permaneça</em>.
-        </p>
+        <p class="eyebrow" data-reveal>Para quem</p>
+        <h2 id="who-titulo" class="who__title" data-split>Planejamento para cada <span class="accent">necessidade da sua empresa.</span></h2>
+        <div class="who__grid">
+          <div class="who__media">
+            <!-- PENDENTE: trocar por foto gerada (Higgsfield exige plano Basic) -->
+            <figure class="photo" data-facet="who">
+              <img src="assets/img/fotos/conteudo-3.webp" alt="Empresário assinando um contrato" width="1100" height="617" loading="lazy" style="object-position:55% 55%">
+            </figure>
+            <div class="coins coins--who" data-coins="who" aria-hidden="true"></div>
+          </div>
+          <ul class="rows">
+            <li class="row" data-reveal><a href="#contato" data-mensagem="Minha empresa fornece para órgãos públicos e gostaria de conversar sobre capital de giro."><span class="row__fill" aria-hidden="true"></span><span class="row__n">01</span><span><span class="row__t"><span data-roll>Fornecedores de órgãos públicos</span></span><span class="row__d">Capital de giro enquanto o pagamento do contrato não chega.</span></span><span class="row__go">Conversar <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span></a></li>
+            <li class="row" data-reveal><a href="#contato" data-mensagem="Gostaria de conversar sobre antecipação de recebíveis da minha empresa."><span class="row__fill" aria-hidden="true"></span><span class="row__n">02</span><span><span class="row__t"><span data-roll>Empresas com recebíveis</span></span><span class="row__d">Antecipação de vendas e notas para organizar o caixa sem esperar o vencimento.</span></span><span class="row__go">Conversar <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span></a></li>
+            <li class="row" data-reveal><a href="#contato" data-mensagem="Sou de uma incorporadora ou construtora e gostaria de conversar sobre recursos para obra ou terreno."><span class="row__fill" aria-hidden="true"></span><span class="row__n">03</span><span><span class="row__t"><span data-roll>Incorporadoras e construtoras</span></span><span class="row__d">Recursos para terrenos, obras e lançamentos, inclusive para continuar obras em andamento.</span></span><span class="row__go">Conversar <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span></a></li>
+            <li class="row" data-reveal><a href="#contato" data-mensagem="Gostaria de conversar sobre crédito com garantia do patrimônio da empresa."><span class="row__fill" aria-hidden="true"></span><span class="row__n">04</span><span><span class="row__t"><span data-roll>Crédito com garantia</span></span><span class="row__d">Imóveis, frotas e máquinas da empresa como garantia para estruturar crédito e liquidez.</span></span><span class="row__go">Conversar <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span></a></li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- ============ M2c · PARA QUEM CUIDAMOS ============ -->
-    <!-- VALIDAR: perfis propostos; confirmar com o cliente quais atendimentos ele realmente oferece -->
-    <section class="section section--linho audiences" id="para-quem" aria-labelledby="audiences-titulo">
-      <div class="wrap">
-        <header class="audiences__head">
-          <p class="eyebrow" data-reveal="fade">Para quem cuidamos</p>
-          <h2 class="h2" id="audiences-titulo" data-split>Momentos em que um cuidado de perto faz diferença.</h2>
-        </header>
-        <ul class="audiences__list">
-            <li class="audience">
-              <a class="audience__link" href="#contato" data-mensagem="Gostaria de conversar sobre o patrimônio da minha família." data-reveal="line">
-                <span class="audience__fill" aria-hidden="true"></span>
-                <span class="audience__num" aria-hidden="true">01</span>
-                <span class="audience__title"><span data-roll>Famílias</span></span>
-                <span class="audience__desc">Organizar, proteger e preparar o patrimônio da família para atravessar gerações.</span>
-                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
-              </a>
-            </li>
-            <li class="audience">
-              <a class="audience__link" href="#contato" data-mensagem="Sou empresário e gostaria de conversar sobre meus investimentos." data-reveal="line">
-                <span class="audience__fill" aria-hidden="true"></span>
-                <span class="audience__num" aria-hidden="true">02</span>
-                <span class="audience__title"><span data-roll>Empresários</span></span>
-                <span class="audience__desc">Separar o que é da empresa e o que é seu, com clareza e uma estratégia para cada lado.</span>
-                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
-              </a>
-            </li>
-            <li class="audience">
-              <a class="audience__link" href="#contato" data-mensagem="Gostaria de conversar sobre planejar o meu futuro." data-reveal="line">
-                <span class="audience__fill" aria-hidden="true"></span>
-                <span class="audience__num" aria-hidden="true">03</span>
-                <span class="audience__title"><span data-roll>Planos para o futuro</span></span>
-                <span class="audience__desc">Construir hoje a tranquilidade dos próximos anos, da aposentadoria aos projetos da vida.</span>
-                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
-              </a>
-            </li>
-            <li class="audience">
-              <a class="audience__link" href="#contato" data-mensagem="Gostaria de conversar sobre uma transição de patrimônio." data-reveal="line">
-                <span class="audience__fill" aria-hidden="true"></span>
-                <span class="audience__num" aria-hidden="true">04</span>
-                <span class="audience__title"><span data-roll>Transições de patrimônio</span></span>
-                <span class="audience__desc">Conduzir heranças e mudanças de vida com cuidado, sem pressa e sem ruído.</span>
-                <span class="audience__cta"><span class="audience__cta-label">Conversar</span> <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span></span>
-              </a>
-            </li>
-        </ul>
+    <!-- ============ 04b · SOLUÇÕES (faixa em movimento) ============ -->
+    <section class="ticker" aria-labelledby="ticker-titulo">
+      <h2 class="visually-hidden" id="ticker-titulo">Soluções</h2>
+      <ul class="visually-hidden">
+        <li>Antecipação de recebíveis públicos e privados</li>
+        <li>Crédito com garantia real</li>
+        <li>Imobiliário e construção</li>
+        <li>Frotas e equipamentos</li>
+        <li>Leaseback</li>
+        <li>Estruturação de capital</li>
+      </ul>
+      <div class="ticker__row" data-ticker="1" aria-hidden="true">
+        <div class="ticker__track"><span>Antecipação de recebíveis</span><i></i><span>Crédito com garantia real</span><i></i><span>Imobiliário e construção</span><i></i><span>Frotas e equipamentos</span><i></i><span>Leaseback</span><i></i><span>Estruturação de capital</span><i></i></div>
+      </div>
+      <div class="ticker__row ticker__row--alt" data-ticker="-1" aria-hidden="true">
+        <div class="ticker__track"><span>Capital de giro</span><i></i><span>Recebíveis públicos</span><i></i><span>Avanço de obra</span><i></i><span>Liquidez com garantia</span><i></i><span>Conexão com o mercado de capitais</span><i></i></div>
       </div>
     </section>
 
-    <!-- ============ M3 · COMO CUIDAMOS ============ -->
-    <section class="section section--areia method" id="como-cuidamos" aria-labelledby="method-titulo">
+    <!-- ============ 05 · COMO CUIDAMOS ============ -->
+    <section class="section method" id="como-cuidamos" aria-labelledby="method-titulo">
       <div class="wrap">
-        <header class="method__head">
-          <p class="eyebrow" data-reveal="fade">Como cuidamos</p>
-          <h2 class="h2" id="method-titulo" data-split>Do primeiro café ao acompanhamento contínuo.</h2>
-        </header>
-
+        <p class="eyebrow" data-reveal>Como cuidamos</p>
+        <h2 id="method-titulo" class="method__title" data-split>Quatro etapas, <span class="accent">sem pressa.</span></h2>
         <div class="method__track">
-          <svg class="method__thread" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true" data-thread>
-            <path pathLength="1" d="M0 56 H250 C300 56 318 14 300 10 C282 6 272 56 332 56 H550 C600 56 618 14 600 10 C582 6 572 56 632 56 H850 C900 56 918 14 900 10 C882 6 872 56 932 56 H1200" />
-          </svg>
-
+          <div class="thread" aria-hidden="true"><i data-thread></i></div>
           <ol class="steps">
-            <li class="step" data-reveal="step">
-              <span class="step__num" aria-hidden="true">01</span>
-              <h3 class="step__title">Conversa</h3>
-              <p>Um primeiro encontro, sem compromisso, para entender quem você é e o que deseja construir.</p>
-            </li>
-            <li class="step" data-reveal="step">
-              <span class="step__num" aria-hidden="true">02</span>
-              <h3 class="step__title">Diagnóstico</h3>
-              <p>Olhamos com calma para o seu patrimônio atual, seus objetivos e o seu perfil.</p>
-            </li>
-            <li class="step" data-reveal="step">
-              <span class="step__num" aria-hidden="true">03</span>
-              <h3 class="step__title">Estratégia</h3>
-              <p>Apresentamos um caminho claro, com cada escolha explicada em linguagem simples.</p>
-            </li>
-            <li class="step" data-reveal="step">
-              <span class="step__num" aria-hidden="true">04</span>
-              <h3 class="step__title">Acompanhamento</h3>
-              <p>Seguimos ao seu lado, revisando o plano sempre que a vida ou o mercado mudarem.</p>
-            </li>
+            <li class="step" data-reveal><span class="step__n">Etapa 1</span><h3>Conversa</h3><p>Entendemos a necessidade da sua empresa, os prazos e as preocupações.</p></li>
+            <li class="step" data-reveal><span class="step__n">Etapa 2</span><h3>Diagnóstico</h3><p>Mapeamos a necessidade atual, os riscos e as oportunidades.</p></li>
+            <li class="step" data-reveal><span class="step__n">Etapa 3</span><h3>Estratégia</h3><p>Estruturamos a solução financeira sob medida, usando garantias quando faz sentido.</p></li>
+            <li class="step" data-reveal><span class="step__n">Etapa 4</span><h3>Acompanhamento</h3><p>Seguimos ao seu lado da formalização à liberação, e depois dela.</p></li>
           </ol>
         </div>
-
-        <p class="method__cta" data-reveal="fade">
-          <a class="link-arrow link-arrow--strong" href="#contato" data-mensagem="Gostaria de agendar uma primeira conversa.">
-            Agendar uma primeira conversa <span class="arrow-swap" aria-hidden="true"><i>→</i><i>→</i></span>
-          </a>
-        </p>
+        <div class="method__cta" data-reveal><a class="btn btn--solid btn--lg" href="#contato" data-magnetic data-mensagem="Gostaria de agendar a primeira conversa."><span class="btn__fill"></span><span>Agendar a primeira conversa</span></a></div>
       </div>
     </section>
 
-    <!-- ============ M4 · PAUSA EDITORIAL (pico) ============ -->
+    <!-- ============ 06 · CITAÇÃO (pico) ============ -->
     <section class="quote" aria-label="Nossa filosofia">
       <div class="quote__panel" data-facet="quote">
-        <div class="quote__lacos" aria-hidden="true"></div>
-        <figure class="quote__inner wrap">
-          <img class="quote__coin" src="assets/brand/moeda-prata-escuro.svg" alt="" width="56" height="56" loading="lazy">
-          <blockquote>
-            <p class="quote__text" data-split-words>“Patrimônio se lapida com paciência.”</p>
-          </blockquote>
-          <figcaption class="quote__by">La Soldi Capital</figcaption>
-        </figure>
+        <div class="coins coins--quote" data-coins="quote" aria-hidden="true"></div>
+        <div class="quote__in">
+          <img src="assets/brand/moeda-gema.svg" alt="" width="46" height="46" data-q>
+          <blockquote><p class="quote__text" data-words>A solução que a sua empresa precisa se lapida com paciência.</p></blockquote>
+          <p class="quote__by" data-q>La Soldi Capital</p>
+        </div>
       </div>
     </section>
 
-    <!-- ============ M5 · CONTATO ============ -->
-    <section class="section contact" id="contato" aria-labelledby="contact-titulo">
-      <div class="contact__band" aria-hidden="true"></div>
-      <div class="wrap contact__grid">
-        <div class="contact__info">
-          <p class="eyebrow eyebrow--light" data-reveal="fade">Contato</p>
-          <h2 class="h2 h2--light" id="contact-titulo" data-split>Vamos conversar sobre o seu patrimônio.</h2>
-          <p class="contact__lead" data-reveal="fade">Deixe seus dados no formulário. Uma pessoa da nossa equipe retorna o contato pessoalmente.</p>
+    <!-- ============ 07 · CONTEÚDOS (provisório) ============ -->
+    <!-- PENDENTE: títulos e textos reais dos conteúdos -->
+    <section class="section posts-section" id="conteudos" aria-labelledby="posts-titulo">
+      <div class="wrap">
+        <div class="posts__head">
+          <div class="stack"><p class="eyebrow" data-reveal>Conteúdos</p><h2 id="posts-titulo" data-split>Cartas e <span class="accent">leituras.</span></h2></div>
+          <p class="posts__intro" data-reveal>Análises e conversas sobre crédito, caixa e mercado de capitais, escritas pela nossa equipe.</p>
+        </div>
+        <div class="posts">
+          <a class="post" href="#conteudos" data-reveal><figure class="photo photo--post"><img src="assets/img/fotos/conteudo-1.webp" alt="Escada branca com luz natural" width="900" height="1350" loading="lazy"></figure><span class="post__cat">Recebíveis</span><span class="post__t"><span class="pendente">[Título do conteúdo]</span></span></a>
+          <a class="post" href="#conteudos" data-reveal><figure class="photo photo--post"><img src="assets/img/fotos/conteudo-2.webp" alt="Montanhas ao pôr do sol" width="1100" height="733" loading="lazy"></figure><span class="post__cat">Carta mensal</span><span class="post__t"><span class="pendente">[Título do conteúdo]</span></span></a>
+          <a class="post" href="#conteudos" data-reveal><figure class="photo photo--post"><img src="assets/img/fotos/conteudo-3.webp" alt="Mão assinando um documento" width="1100" height="617" loading="lazy"></figure><span class="post__cat">Empresas</span><span class="post__t"><span class="pendente">[Título do conteúdo]</span></span></a>
+        </div>
+      </div>
+    </section>
 
-          <dl class="contact__data" data-reveal="fade">
-            <!-- PENDENTE: confirmar dados reais com o cliente -->
-            <div><dt>E-mail</dt><dd><a href="mailto:contato@lasoldicapital.com.br">contato@lasoldicapital.com.br</a></dd></div>
-            <div><dt>Atendimento</dt><dd>Segunda a sexta, em horário comercial</dd></div>
-            <div><dt>Onde estamos</dt><dd>Sul do Brasil · presencial e online</dd></div>
+    <!-- ============ 08 · CONTATO ============ -->
+    <section class="section contact" id="contato" aria-labelledby="contact-titulo">
+      <div class="wrap contact__grid">
+        <div>
+          <p class="eyebrow" data-reveal>Contato</p>
+          <h2 id="contact-titulo" class="contact__title" data-split>Vamos <span class="accent">conversar?</span></h2>
+          <p class="contact__lead" data-reveal>Conte um pouco sobre a necessidade da sua empresa. Um assessor retorna para marcar a primeira conversa.</p>
+          <dl class="facts" data-reveal>
+            <div><dt>E-mail</dt><dd><a href="mailto:atendimento@lasoldicapital.com.br">atendimento@lasoldicapital.com.br</a></dd></div>
+            <div><dt>Atendimento</dt><dd>Segunda a sexta, das 9h às 18h</dd></div>
+            <div><dt>Onde</dt><dd>Sul do Brasil · presencial e online</dd></div>
           </dl>
         </div>
 
-        <div class="contact__form-wrap" data-facet="form">
-          <form class="form" action="api/contato.php" method="post" novalidate data-form>
-            <h3 class="form__title">Fale com a La Soldi</h3>
-            <p class="form__hint">Deixe seus dados. Leva menos de um minuto.</p>
-
-            <div class="field">
-              <label for="f-nome">Nome</label>
-              <input id="f-nome" name="nome" type="text" autocomplete="name" required maxlength="120">
-              <p class="field__error" id="f-nome-erro" aria-live="polite"></p>
-            </div>
-
+        <form class="form" action="api/contato.php" method="post" novalidate data-form data-facet="form">
+          <div class="field">
+            <label for="f-nome">Nome</label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required maxlength="120">
+            <p class="field__error" id="f-nome-erro" aria-live="polite"></p>
+          </div>
+          <div class="two">
             <div class="field">
               <label for="f-tel">Telefone</label>
-              <input id="f-tel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" placeholder="(00) 00000-0000">
+              <input id="f-tel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required maxlength="20">
               <p class="field__error" id="f-tel-erro" aria-live="polite"></p>
             </div>
-
             <div class="field">
-              <label for="f-email">E-mail <span class="field__opt">(opcional)</span></label>
-              <input id="f-email" name="email" type="email" autocomplete="email" maxlength="160">
+              <label for="f-email">E-mail <small>(opcional)</small></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br" maxlength="160">
               <p class="field__error" id="f-email-erro" aria-live="polite"></p>
             </div>
-
-            <div class="field">
-              <label for="f-msg">Como podemos ajudar? <span class="field__opt">(opcional)</span></label>
-              <textarea id="f-msg" name="mensagem" rows="3" maxlength="2000"></textarea>
-            </div>
-
-            <!-- anti-spam: campo invisível + tempo de preenchimento -->
-            <div class="field--hp" aria-hidden="true">
-              <label for="f-site">Não preencha este campo</label>
-              <input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off">
-            </div>
-            <input type="hidden" name="t" value="" data-form-time>
-
-            <div class="field field--check">
-              <input id="f-lgpd" name="consentimento" type="checkbox" value="sim" required>
-              <label for="f-lgpd">Concordo com o uso dos meus dados para retorno do contato, conforme a <a href="privacidade.html">Política de Privacidade</a>.</label>
-              <p class="field__error" id="f-lgpd-erro" aria-live="polite"></p>
-            </div>
-
-            <button class="btn btn--primary btn--block" type="submit" data-form-submit>
-              <span>Quero ser contatado</span>
-            </button>
-
-            <div class="form__status" role="status" aria-live="polite" data-form-status></div>
-          </form>
-        </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Como podemos ajudar? <small>(opcional)</small></label>
+            <textarea id="f-msg" name="mensagem" rows="4" maxlength="2000" placeholder="Conte um pouco sobre a necessidade da sua empresa"></textarea>
+          </div>
+          <div class="field--hp" aria-hidden="true">
+            <label for="f-site">Não preencha este campo</label>
+            <input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="t" value="" data-form-time>
+          <div class="field field--check">
+            <input id="f-lgpd" name="consentimento" type="checkbox" value="sim" required>
+            <label for="f-lgpd">Concordo com a <a href="privacidade.html">Política de Privacidade</a> e autorizo o contato da La Soldi Capital.</label>
+            <p class="field__error" id="f-lgpd-erro" aria-live="polite"></p>
+          </div>
+          <div class="form__foot">
+            <button class="btn btn--solid btn--lg" type="submit" data-form-submit><span class="btn__fill"></span><span>Quero ser contatado</span></button>
+          </div>
+          <div class="form__status" role="status" aria-live="polite" data-form-status></div>
+        </form>
       </div>
     </section>
   </main>
 
-  <!-- ============ M6 · RODAPÉ ============ -->
-  <footer class="site-footer">
-    <div class="wrap site-footer__grid">
-      <a class="site-footer__brand" href="#topo" aria-label="La Soldi Capital, voltar ao início">
-        <img src="assets/brand/logo-linho-prata.svg" alt="La Soldi Capital" width="200" height="89" loading="lazy">
-      </a>
-
-      <nav class="site-footer__nav" aria-label="Rodapé">
-        <ul>
-          <li><a href="#quem-somos">Quem somos</a></li>
-          <li><a href="#para-quem">Para quem</a></li>
-          <li><a href="#como-cuidamos">Como cuidamos</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-        <ul>
-          <li><a href="privacidade.html">Política de Privacidade</a></li>
-          <li><a href="avisos.html">Avisos legais</a></li>
-        </ul>
-      </nav>
-
-      <div class="site-footer__legal">
-        <!-- PENDENTE: razão social, CNPJ e texto regulatório obrigatório (depende da natureza da atividade) -->
-        <p>
-          As informações deste site têm caráter institucional e não constituem oferta, recomendação ou
-          garantia de rentabilidade. Investimentos envolvem riscos.
-        </p>
-        <p class="site-footer__copy">© <span data-year>2026</span> La Soldi Capital. Todos os direitos reservados.</p>
+  <!-- ============ RODAPÉ · GRUPO DIAMOND ============ -->
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <div class="foot__sign" data-reveal><b>Grupo Diamond</b><span>Conectando empresas ao mercado de capitais.</span></div>
+      <div class="foot__brands" data-reveal><img src="assets/brand/logos-grupo-diamond.svg" alt="DI Private, La Soldi Capital e La Diamond Securitizadora" width="888" height="90" loading="lazy"></div>
+      <!-- PENDENTE: razão social e CNPJ -->
+      <p class="foot__legal">Este site é institucional e não constitui oferta, recomendação ou garantia de aprovação de crédito. Taxas, prazos e condições dependem da análise de cada operação.</p>
+      <div class="foot__base">
+        <span>© <span data-year>2026</span> La Soldi Capital · Grupo Diamond</span>
+        <nav aria-label="Rodapé"><a href="privacidade.html">Política de Privacidade</a><a href="avisos.html">Avisos legais</a><a href="#contato">Contato</a></nav>
       </div>
     </div>
   </footer>
-
-  <!-- Sprites -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-arrow" viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
-    </symbol>
-    <!-- ícones dos princípios: mesma família (caixa 48, traço 1.6, pontas arredondadas, derivados da marca) -->
-    <symbol id="g-laco" viewBox="0 0 48 48">
-      <path d="M6 33c9 0 15-3 18.5-11 2.6-6-.6-11.6-4.8-10.2-5 1.7-3.3 14.4 5.3 19.2 5 2.8 11.5 2.9 17 1" />
-    </symbol>
-    <symbol id="g-moeda" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="17" />
-      <polygon points="21.4,14.8 31.5,19.1 32.9,25.4 20.2,31.6 15.9,18.3" />
-    </symbol>
-    <symbol id="g-gema" viewBox="0 0 48 48">
-      <polygon points="20.6,9.5 37.4,16.6 39.7,27.1 18.6,37.4 11.4,15.2" />
-    </symbol>
-    <symbol id="g-pilar" viewBox="0 0 48 48">
-      <path d="M8 16 24 8l16 8M10 16h28M10 39h28M8 40h32M14 20v15M21 20v15M27 20v15M34 20v15" />
-    </symbol>
-  </svg>
 
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>

@@ -97,7 +97,7 @@ export function initForm() {
     if (errors.length) { errors[0].focus(); return; }
 
     submit.setAttribute('aria-busy', 'true');
-    const label = submit.querySelector('span');
+    const label = submit.querySelector('.roll__a') || submit.querySelector('span:not(.btn__fill)');
     const original = label.textContent;
     label.textContent = 'Enviando…';
 
@@ -114,7 +114,7 @@ export function initForm() {
       done.className = 'form-success';
       done.setAttribute('tabindex', '-1');
       done.innerHTML = `
-        <img class="form-success__coin" src="assets/brand/moeda-prata-claro.svg" alt="" width="48" height="48">
+        <img src="assets/brand/moeda-gema.svg" alt="" width="44" height="44">
         <h3>Recebemos sua mensagem.</h3>
         <p>Em breve, alguém da nossa equipe fala com você pessoalmente.</p>`;
       form.replaceWith(done);

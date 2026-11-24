@@ -9,8 +9,9 @@ DirectoryIndex index.html
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://lasoldicapital.com.br%{REQUEST_URI} [L,R=301]
   # kit de marca, documentação e arquivos de projeto não são públicos
-  RewriteRule ^(_kit|docs|\.github|node_modules)(/|$) - [F,L]
+  RewriteRule ^(_kit|_prints|docs|src|\.github|node_modules)(/|$) - [F,L]
   RewriteRule \.(md|docx)$ - [F,L]
+  RewriteRule ^package(-lock)?\.json$ - [F,L]
 </IfModule>
 
 <IfModule mod_headers.c>

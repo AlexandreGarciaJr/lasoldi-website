@@ -2,9 +2,9 @@
 import { initNav } from './nav.js';
 import { initForm } from './form.js';
 import { initReveals } from './reveal.js';
-import { initCoinGL } from './coin-gl.js';
 import { initHover } from './hover.js';
 import { initSmooth } from './smooth.js';
+import { initCoins } from './coins.js';
 
 const yearEl = document.querySelector('[data-year]');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -13,11 +13,12 @@ initNav();
 initForm();
 
 const motionOK = document.documentElement.classList.contains('motion');
-initHover({ motion: motionOK && !!window.gsap });
+const hasGsap = !!(window.gsap && window.ScrollTrigger && window.SplitText);
+initHover({ motion: motionOK && hasGsap });
 
-if (motionOK && window.gsap && window.ScrollTrigger && window.SplitText) {
+if (motionOK && hasGsap) {
   initSmooth();
-  // Espera as fontes para quebrar linhas com as métricas reais (evita re-split visível).
+  // espera as fontes para quebrar as linhas com as métricas reais
   const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
   Promise.race([fontsReady, new Promise((r) => setTimeout(r, 1200))]).then(() => {
     initReveals();
@@ -28,7 +29,7 @@ if (motionOK && window.gsap && window.ScrollTrigger && window.SplitText) {
   window.__lsMotionReady = true;
 }
 
-// O brilho da prata entra depois do primeiro paint (não compete com o LCP).
-const startGL = () => initCoinGL(document.querySelector('[data-coin-gl]'), { motion: motionOK });
-if ('requestIdleCallback' in window) requestIdleCallback(startGL, { timeout: 1500 });
-else setTimeout(startGL, 600);
+// A cena 3D entra depois do primeiro paint: não compete com o conteúdo.
+const startCoins = () => initCoins({ reduced: !motionOK });
+if ('requestIdleCallback' in window) requestIdleCallback(startCoins, { timeout: 1800 });
+else setTimeout(startCoins, 700);

@@ -1,31 +1,22 @@
 /* =========================================================
-   Estados iniciais de animação.
-   Só valem com JS ativo E movimento permitido (classe .motion no <html>).
-   Sem JS, ou com prefers-reduced-motion, tudo aparece normalmente.
+   Estados iniciais de animação: só com JS ativo e movimento permitido
+   (classe .motion no <html>). Sem JS ou com movimento reduzido, tudo
+   aparece pronto.
    ========================================================= */
-
-.motion [data-reveal="fade"],
-.motion [data-reveal="line"],
-.motion [data-reveal="step"] {
-  opacity: 0;
-  transform: translate3d(0, var(--shift-y), 0);
-}
-
+.motion [data-reveal] { opacity: 0; transform: translate3d(0, 24px, 0); }
 .motion [data-split],
-.motion [data-split-words] { visibility: hidden; }
-
+.motion [data-hero],
+.motion [data-manifesto],
+.motion [data-words] { visibility: hidden; }
 .motion [data-facet] { opacity: 0; }
+.motion [data-principle] { --draw: 0; }
+.motion [data-principle] > * { opacity: 0; }
+.motion [data-thread] { --p: 0; }
+.motion [data-q] { opacity: 0; }
 
-/* fio do método: começa "não desenhado" */
-.motion .method__thread path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-.motion .method__track { --thread-progress: 0; }
+/* máscara das linhas do SplitText: folga para acentos e descendentes */
+.split-line-mask { padding-block: 0.08em; margin-block: -0.08em; }
 
-/* linhas do SplitText com máscara: um pouco de folga para descendentes e acentos */
-.split-line-mask { padding-bottom: 0.08em; margin-bottom: -0.08em; padding-top: 0.06em; margin-top: -0.06em; }
-
-/* =========================================================
-   Movimento reduzido: só fades curtos (feitos pelo JS)
-   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
@@ -33,7 +24,3 @@
     animation-iteration-count: 1 !important;
   }
 }
-
-/* hero e manifesto: o JS revela depois de dividir o texto */
-.motion [data-hero],
-.motion [data-manifesto] { visibility: hidden; }

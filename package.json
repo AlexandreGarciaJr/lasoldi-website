@@ -1,0 +1,13 @@
+{
+  "name": "lasoldi-website",
+  "private": true,
+  "description": "Site institucional La Soldi Capital. Só a cena 3D das moedas tem build; o resto do site é HTML/CSS/JS puro.",
+  "scripts": {
+    "build:coins": "esbuild src/coins/index.js --bundle --format=esm --minify --target=es2020 --legal-comments=none --outfile=assets/js/coins.bundle.js",
+    "dev": "php -S 127.0.0.1:8088"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "three": "^0.187.0"
+  }
+}
